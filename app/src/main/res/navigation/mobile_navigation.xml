@@ -14,7 +14,26 @@
         android:id="@+id/gestionFragment"
         android:name="com.example.agroapp.menu.ui.gestion.GestionFragment"
         android:label="fragment_gestion"
-        tools:layout="@layout/fragment_gestion" />
+        tools:layout="@layout/fragment_gestion" >
+        <action
+            android:id="@+id/action_gestionFragment_to_actividadFragment"
+            app:destination="@id/actividadFragment" />
+        <action
+            android:id="@+id/action_gestionFragment_to_recursoFragment"
+            app:destination="@id/recursoFragment" />
+        <action
+            android:id="@+id/action_gestionFragment_to_loteFragment"
+            app:destination="@id/loteFragment" />
+        <action
+            android:id="@+id/action_gestionFragment_to_insumoFragment"
+            app:destination="@id/insumoFragment" />
+        <action
+            android:id="@+id/action_gestionFragment_to_cosechaFragment"
+            app:destination="@id/cosechaFragment" />
+        <action
+            android:id="@+id/action_gestionFragment_to_campoFragment"
+            app:destination="@id/campoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.agroapp.menu.ui.perfil.PerfilFragment"
@@ -30,5 +49,59 @@
         android:name="com.example.agroapp.menu.ui.mapa.MapaFragment"
         android:label="fragment_mapa"
         tools:layout="@layout/fragment_mapa" />
+    <fragment
+        android:id="@+id/actividadFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.actividad.ActividadFragment"
+        android:label="fragment_actividad"
+        tools:layout="@layout/fragment_actividad" >
+        <action
+            android:id="@+id/action_actividadFragment_to_gestionFragment"
+            app:destination="@id/gestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/campoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.campo.CampoFragment"
+        android:label="fragment_campo"
+        tools:layout="@layout/fragment_campo" >
+        <action
+            android:id="@+id/action_campoFragment_to_gestionFragment"
+            app:destination="@id/gestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cosechaFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.cosecha.CosechaFragment"
+        android:label="fragment_cosecha"
+        tools:layout="@layout/fragment_cosecha" >
+        <action
+            android:id="@+id/action_cosechaFragment_to_gestionFragment"
+            app:destination="@id/gestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insumoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.insumo.InsumoFragment"
+        android:label="fragment_insumo"
+        tools:layout="@layout/fragment_insumo" >
+        <action
+            android:id="@+id/action_insumoFragment_to_gestionFragment"
+            app:destination="@id/gestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loteFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.lote.LoteFragment"
+        android:label="fragment_lote"
+        tools:layout="@layout/fragment_lote" >
+        <action
+            android:id="@+id/action_loteFragment_to_gestionFragment"
+            app:destination="@id/gestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recursoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.recurso.RecursoFragment"
+        android:label="fragment_recurso"
+        tools:layout="@layout/fragment_recurso" >
+        <action
+            android:id="@+id/action_recursoFragment_to_gestionFragment"
+            app:destination="@id/gestionFragment" />
+    </fragment>
 
 </navigation>
