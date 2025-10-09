@@ -16,7 +16,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
 
 
 
-    ;
+
     public LoginActivityViewModel(@NonNull Application application) {
         super(application);
     }
@@ -55,5 +55,34 @@ public class LoginActivityViewModel extends AndroidViewModel {
                 mErrorPassword.setValue("Usuario o contraseña incorrectos");
             }
         }
+
+
+/*
+ todo-->IMPLEMENTAR ESTO CUANDO ARME EL LOGIN DE LOS USUARIOS
+
+        if (valido) {
+            ApiCLient.appService service = ApiCLient.getService();
+            Call<String> call = service.login(usuario, password);
+
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if (response.isSuccessful()) {
+                        String token = response.body();
+                        Services.guardarToken(context, token);
+                        mLoginExitoso.postValue(true);
+                    } else {
+                        mErrorPassword.postValue("Usuario o contraseña incorrectos");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(context, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        */
+
     }
 }
