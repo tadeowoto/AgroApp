@@ -15,4 +15,6 @@
     <string name="Mapa">Mapa</string>
     <string name="Perfil">Perfil</string>
     <string name="salir">Salir</string>
+    <string name="profile_picture">Foto de perfil</string>
+    <string name="phone">Telefono</string>
 </resources>

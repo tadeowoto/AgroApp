@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.legacy.support.v4)
     implementation(libs.play.services.maps)
+    implementation("com.google.android.material:material:1.13.0")
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     testImplementation(libs.junit)

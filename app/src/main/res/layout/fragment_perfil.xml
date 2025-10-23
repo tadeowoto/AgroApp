@@ -1,13 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
     tools:context=".menu.ui.perfil.PerfilFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
 
-</FrameLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgPerfil"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_person"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="2dp"
+        android:contentDescription="@string/app_name" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Juan Pérez"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="juanperez@gmail.com"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+54 9 351 123 4567"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCambiarPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar perfil"
+        android:textAllCaps="false"
+        android:layout_marginTop="24dp"
+        app:icon="@drawable/ic_edit"
+        app:iconPadding="8dp"
+        app:iconTint="@color/white"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/white" />
+
+</LinearLayout>
+
