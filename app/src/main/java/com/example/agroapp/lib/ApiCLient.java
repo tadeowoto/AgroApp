@@ -15,7 +15,8 @@ import retrofit2.http.POST;
 
 public class ApiCLient {
 
-    private static final String BASE_URL = "";
+    private static final String BASE_URL = "http://10.0.2.2:5133/";
+
 
     public static appService getService(){
         Gson gson = new GsonBuilder()
@@ -31,11 +32,10 @@ public class ApiCLient {
 
     public interface appService {
 
-        //todo --> Tengo que implementarlo
         @FormUrlEncoded
-        @POST("api/usuarios/login")
-        Call<String> login(@Field("Usuario") String email, @Field("Password") String password);
-        @GET("api/usuarios")
+        @POST("/api/usuarios/login")
+        Call<String> login(@Field("email") String email, @Field("password") String password);
+        @GET("api/usuarios/logged")
         Call<Usuario> obtenerUsuario(@Header("Authorization") String token);
     }
 }
