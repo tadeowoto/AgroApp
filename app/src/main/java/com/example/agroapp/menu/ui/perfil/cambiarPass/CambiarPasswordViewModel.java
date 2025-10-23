@@ -1,6 +1,8 @@
 package com.example.agroapp.menu.ui.perfil.cambiarPass;
 
 import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -10,6 +12,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.agroapp.lib.ApiCLient;
 import com.example.agroapp.lib.Services;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CambiarPasswordViewModel extends AndroidViewModel {
 
@@ -18,11 +23,17 @@ public class CambiarPasswordViewModel extends AndroidViewModel {
     private MutableLiveData<String> mErrorNuevaContrasenia = new MutableLiveData<>();
     private MutableLiveData<String> mErrorRepetirNuevaContrasenia = new MutableLiveData<>();
 
+    private MutableLiveData<String> mExito = new MutableLiveData<>();
 
 
     public CambiarPasswordViewModel(@NonNull Application application) {
         super(application);
     }
+
+    public LiveData<String> getExito() {
+        return mExito;
+    }
+
 
     public LiveData<String> getErrorContraseniaActual() {
         return mErrorContraseniaActual;
@@ -45,7 +56,27 @@ public class CambiarPasswordViewModel extends AndroidViewModel {
         if (valido) {
             String token = Services.leerToken(getApplication());
             ApiCLient.appService service = ApiCLient.getService();
-            //llamar a la api
+            Call<String> call = service.cambiarPassword("Bearer " + token, contraseniaActual, nuevaContrasenia);
+
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if (response.isSuccessful()){
+                        mExito.postValue("Contraseña cambiada correctamente");
+                    } else {
+                        mErrorRepetirNuevaContrasenia.postValue("Error al cambiar la contraseña");
+                        Log.e("Error", response.message() + " " + response.code() + " " + response.errorBody() + " " + response.raw());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(getApplication(), "Error al cambiar la contraseña", Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+
         }
 
     }

@@ -7,11 +7,13 @@ import com.google.gson.GsonBuilder;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public class ApiCLient {
 
@@ -37,5 +39,11 @@ public class ApiCLient {
         Call<String> login(@Field("email") String email, @Field("password") String password);
         @GET("api/usuarios/logged")
         Call<Usuario> obtenerUsuario(@Header("Authorization") String token);
+
+        @FormUrlEncoded
+        @PUT("/api/usuarios/CambiarPassword")
+        Call<String> cambiarPassword(@Header("Authorization") String token, @Field("currentPassword") String contraseniaActual, @Field("newPassword") String nuevaContrasenia);
+
     }
+
 }

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.agroapp.R;
 import com.example.agroapp.databinding.FragmentCambiarPasswordBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class CambiarPasswordFragment extends Fragment {
 
@@ -37,6 +38,20 @@ public class CambiarPasswordFragment extends Fragment {
 
             vm.cambiarPassword(contraseniaActual, nuevaContrasenia, repeticionNuevaContrasenia);
         });
+
+        vm.getExito().observe(getViewLifecycleOwner(), exito -> {
+            Snackbar.make(binding.getRoot(), exito, Snackbar.LENGTH_LONG).show();
+        });
+        vm.getErrorContraseniaActual().observe(getViewLifecycleOwner(), error -> {
+            binding.tilPassVieja.setError(error);
+        });
+        vm.getErrorNuevaContrasenia().observe(getViewLifecycleOwner(), error -> {
+            binding.tilNuevaPass.setError(error);
+        });
+        vm.getErrorRepetirNuevaContrasenia().observe(getViewLifecycleOwner(), error -> {
+            binding.tilRepetirNuevaPass.setError(error);
+        });
+
 
         return root;
     }
