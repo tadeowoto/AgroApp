@@ -67,7 +67,6 @@ public class CambiarPasswordViewModel extends AndroidViewModel {
                         mExito.setValue("Contraseña cambiada con éxito");
                     }
                 }
-
                 @Override
                 public void onFailure(Call<JsonObject> call, Throwable t) {
                     Toast.makeText(getApplication(), t.getMessage(), Toast.LENGTH_LONG).show();
