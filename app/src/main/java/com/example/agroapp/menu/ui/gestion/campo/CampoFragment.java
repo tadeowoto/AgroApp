@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -38,6 +39,9 @@ public class CampoFragment extends Fragment {
 
         });
 
+        binding.btnAgregarCampo.setOnClickListener(v -> {
+            Navigation.findNavController( root).navigate(R.id.action_campoFragment_to_agregarCampoFragment);
+        });
         vm.cargarCampos();
 
 

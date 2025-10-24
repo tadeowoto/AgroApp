@@ -57,8 +57,8 @@ public class ApiCLient {
         @POST("/api/campos/editar/{id_campo}")
         Call<Campo> actualizarCampo(@Header("Authorization") String token, @Path("id_campo") int id_campo, @Body Campo campo);
 
-        @DELETE("/api/campos/eliminar/{id_campo}")
-        Call<JsonObject> eliminarCampo(@Header("Authorization") String token, @Path("id_campo") int id_campo);
+        @POST("/api/campos/agregar")
+        Call<JsonObject> agregarCampo(@Header("Authorization") String token, @Body Campo campo);
 
     }
 
