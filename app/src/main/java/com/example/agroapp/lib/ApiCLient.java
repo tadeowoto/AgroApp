@@ -3,6 +3,7 @@ package com.example.agroapp.lib;
 import com.example.agroapp.model.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -42,7 +43,7 @@ public class ApiCLient {
 
         @FormUrlEncoded
         @PUT("/api/usuarios/CambiarPassword")
-        Call<String> cambiarPassword(@Header("Authorization") String token, @Field("currentPassword") String contraseniaActual, @Field("newPassword") String nuevaContrasenia);
+        Call<JsonObject> cambiarPassword(@Header("Authorization") String token, @Field("currentPassword") String contraseniaActual, @Field("newPassword") String nuevaContrasenia);
 
     }
 

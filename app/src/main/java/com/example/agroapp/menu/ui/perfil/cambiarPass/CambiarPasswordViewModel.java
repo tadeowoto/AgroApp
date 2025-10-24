@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.agroapp.lib.ApiCLient;
 import com.example.agroapp.lib.Services;
+import com.google.gson.JsonObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,24 +58,19 @@ public class CambiarPasswordViewModel extends AndroidViewModel {
         if (valido) {
             String token = Services.leerToken(getApplication());
             ApiCLient.appService service = ApiCLient.getService();
-            Call<String> call = service.cambiarPassword("Bearer " + token, contraseniaActual, nuevaContrasenia);
+            Call<JsonObject> call = service.cambiarPassword("Bearer " + token, contraseniaActual, nuevaContrasenia);
 
-            call.enqueue(new Callback<String>() {
+            call.enqueue(new Callback<JsonObject>() {
                 @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    if (response.isSuccessful()){
-                        mExito.postValue("Contraseña cambiada correctamente");
-                    } else {
-                        mErrorRepetirNuevaContrasenia.postValue("Error al cambiar la contraseña");
-                        Log.e("Error", response.message() + " " + response.code() + " " + response.errorBody() + " " + response.raw());
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    if (response.isSuccessful()) {
+                        mExito.setValue("Contraseña cambiada con éxito");
                     }
                 }
 
                 @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(getApplication(), "Error al cambiar la contraseña", Toast.LENGTH_SHORT).show();
-
-
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(getApplication(), t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
 
