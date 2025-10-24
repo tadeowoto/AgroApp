@@ -12,12 +12,14 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public class ApiCLient {
 
@@ -51,6 +53,12 @@ public class ApiCLient {
 
         @GET("/api/campos/usuario")
         Call<List<Campo>> obtenerCampos(@Header("Authorization") String token);
+
+        @POST("/api/campos/editar/{id_campo}")
+        Call<Campo> actualizarCampo(@Header("Authorization") String token, @Path("id_campo") int id_campo, @Body Campo campo);
+
+        @DELETE("/api/campos/eliminar/{id_campo}")
+        Call<JsonObject> eliminarCampo(@Header("Authorization") String token, @Path("id_campo") int id_campo);
 
     }
 

@@ -5,166 +5,167 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="?attr/colorSurface"
-    >
+    android:background="@color/colorBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp">
 
-
-        <TextView
-            android:id="@+id/tvNombreDetalle"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutNombreCampo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceHeadline5"
-            android:textColor="?attr/colorOnSurface"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Nombre del campo"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Campo La Esperanza" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombreCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/colorTextPrimary"
+                tools:text="Campo La Esperanza" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tvUbicacionDetalle"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutUbicacionCampo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="?attr/textAppearanceBody1"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Ubicación"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutNombreCampo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNombreDetalle"
-            tools:text="Pergamino, Buenos Aires" />
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUbicacionCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/colorTextPrimary"
+                tools:text="Pergamino, Buenos Aires" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutUbicacionCampo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUbicacionDetalle" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivIconoArea"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <LinearLayout
+            android:id="@+id/layoutDatos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:src="@drawable/ic_area_outline"
-            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/divider"
-            app:tint="?attr/colorPrimary"
-            android:contentDescription="Icono de área" />
-
-        <TextView
-            android:id="@+id/tvLabelExtension"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Extensión (ha)"
-            android:textAppearance="?attr/textAppearanceOverline"
-            app:layout_constraintBottom_toTopOf="@id/tvValorExtension"
-            app:layout_constraintStart_toEndOf="@id/ivIconoArea"
-            app:layout_constraintTop_toTopOf="@id/ivIconoArea"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/tvValorExtension"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="?attr/colorOnSurface"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/ivIconoArea"
-            app:layout_constraintStart_toStartOf="@id/tvLabelExtension"
-            app:layout_constraintTop_toBottomOf="@id/tvLabelExtension"
-            tools:text="150.5" />
-
-
-        <ImageView
-            android:id="@+id/ivIconoCoords"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="28dp"
-            android:src="@drawable/ic_location_pin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivIconoArea"
-            app:tint="?attr/colorPrimary"
-            android:contentDescription="Icono de coordenadas" />
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutExtension"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Extensión (ha)"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp">
 
-        <TextView
-            android:id="@+id/tvLabelLatitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Latitud"
-            android:textAppearance="?attr/textAppearanceOverline"
-            app:layout_constraintStart_toEndOf="@id/ivIconoCoords"
-            app:layout_constraintTop_toTopOf="@id/ivIconoCoords" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etExtensionCampo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:enabled="false"
+                    android:textColor="@color/colorTextPrimary"
+                    tools:text="150.5" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tvValorLatitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="?attr/colorOnSurface"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/tvLabelLatitud"
-            app:layout_constraintTop_toBottomOf="@id/tvLabelLatitud"
-            tools:text="-33.8935" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
 
-        <TextView
-            android:id="@+id/tvLabelLongitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="Longitud"
-            android:textAppearance="?attr/textAppearanceOverline"
-            app:layout_constraintStart_toEndOf="@id/tvLabelLatitud"
-            app:layout_constraintTop_toTopOf="@id/tvLabelLatitud" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutLatitud"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Latitud"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp">
 
-        <TextView
-            android:id="@+id/tvValorLongitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="?attr/colorOnSurface"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/tvLabelLongitud"
-            app:layout_constraintTop_toBottomOf="@id/tvLabelLongitud"
-            tools:text="-60.5702" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLatitudCampo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:enabled="false"
+                        android:textColor="@color/colorTextPrimary"
+                        tools:text="-33.8935" />
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutLongitud"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:hint="Longitud"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLongitudCampo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:enabled="false"
+                        android:textColor="@color/colorTextPrimary"
+                        tools:text="-60.5702" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/buttonContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layoutDatos"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvValorLatitud"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="1.0">
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEliminarCampo"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Eliminar"
-                android:textColor="?attr/colorError"
-                app:strokeColor="?attr/colorError"
-                android:layout_marginEnd="8dp"/>
-
+            app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEditarCampo"
@@ -172,9 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Editar"
-                android:layout_marginStart="8dp"/>
-
+                android:layout_marginStart="8dp" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

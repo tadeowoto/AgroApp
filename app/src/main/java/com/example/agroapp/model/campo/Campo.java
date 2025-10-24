@@ -21,6 +21,13 @@ public class Campo implements Serializable {
         this.longitud = longitud;
         this.latitud = latitud;
     }
+    public Campo(String nombre, String ubicacion, double extension_ha, double longitud, double latitud) {
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+        this.extension_ha = extension_ha;
+        this.longitud = longitud;
+        this.latitud = latitud;
+    }
 
     public int getId_campo() {
         return id_campo;
