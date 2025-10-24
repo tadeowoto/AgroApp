@@ -73,14 +73,12 @@ public class LoginActivityViewModel extends AndroidViewModel {
                         mLoginExitoso.postValue(true);
                     } else {
                         mErrorPassword.postValue("Usuario o contraseña incorrectos");
-                        Log.d("salida" , "Error de conexión" + response.errorBody());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     Toast.makeText(context, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("salida" , t.getMessage() + t.getCause() + t.getLocalizedMessage());
                 }
             });
         }

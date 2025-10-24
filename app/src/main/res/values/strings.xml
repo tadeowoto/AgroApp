@@ -17,4 +17,6 @@
     <string name="salir">Salir</string>
     <string name="profile_picture">Foto de perfil</string>
     <string name="phone">Telefono</string>
+    <string name="icono_de_campo">icono del campo\n</string>
+    <string name="ver_detalle_campo">ver detalle campo</string>
 </resources>

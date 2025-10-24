@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_campoFragment_to_gestionFragment"
             app:destination="@id/gestionFragment" />
+        <action
+            android:id="@+id/action_campoFragment_to_detalleCampoFragment"
+            app:destination="@id/detalleCampoFragment" />
     </fragment>
     <fragment
         android:id="@+id/cosechaFragment"
@@ -115,6 +118,15 @@
         <action
             android:id="@+id/action_cambiarPasswordFragment_to_perfilFragment"
             app:destination="@id/perfilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleCampoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.campo.detalleCampo.detalleCampoFragment"
+        android:label="fragment_detalle_campo"
+        tools:layout="@layout/fragment_detalle_campo" >
+        <action
+            android:id="@+id/action_detalleCampoFragment_to_campoFragment"
+            app:destination="@id/campoFragment" />
     </fragment>
 
 </navigation>
