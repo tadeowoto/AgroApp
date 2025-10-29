@@ -2,6 +2,7 @@ package com.example.agroapp.lib;
 
 import com.example.agroapp.model.Usuario;
 import com.example.agroapp.model.campo.Campo;
+import com.example.agroapp.model.lote.Lote;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -59,6 +60,9 @@ public class ApiCLient {
 
         @POST("/api/campos/agregar")
         Call<JsonObject> agregarCampo(@Header("Authorization") String token, @Body Campo campo);
+
+        @GET("/api/lotes/{id_campo}")
+        Call<List<Lote>> obtenerLotesPorIdCampo(@Header("Authorization") String token, @Path("id_campo") int id_campo);
 
     }
 
