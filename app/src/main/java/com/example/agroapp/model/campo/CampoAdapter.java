@@ -1,29 +1,30 @@
 package com.example.agroapp.model.campo;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.agroapp.R;
-
 import java.util.List;
 
 public class CampoAdapter extends RecyclerView.Adapter<CampoAdapter.ViewHolderCampo> {
+
     private List<Campo> lista;
-    private Context context;
     private LayoutInflater li;
-    public CampoAdapter(List<Campo> lista, Context context, LayoutInflater li) {
+    private OnCampoClickListener listener;
+
+    public interface OnCampoClickListener {
+        void onCampoClick(Campo campo, View view);
+    }
+
+    public CampoAdapter(List<Campo> lista, LayoutInflater li, OnCampoClickListener listener) {
         this.lista = lista;
-        this.context = context;
         this.li = li;
+        this.listener = listener;
     }
 
     @NonNull
@@ -39,27 +40,21 @@ public class CampoAdapter extends RecyclerView.Adapter<CampoAdapter.ViewHolderCa
         holder.nombre.setText(c.getNombre());
         holder.ubicacion.setText(c.getUbicacion());
         holder.area.setText("Área: " + c.getExtension_ha() + " ha");
-        holder.card.setOnClickListener( v -> {
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("campo", c);
-            Navigation.findNavController(v).navigate(R.id.action_campoFragment_to_detalleCampoFragment, bundle);
+        holder.card.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onCampoClick(c, v);
+            }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return lista.size() == 0 ? 0 : lista.size();
+        return lista != null ? lista.size() : 0;
     }
 
     public class ViewHolderCampo extends RecyclerView.ViewHolder {
-
-        TextView nombre;
-        TextView ubicacion;
-        TextView area;
-
+        TextView nombre, ubicacion, area;
         CardView card;
-
 
         public ViewHolderCampo(@NonNull View itemView) {
             super(itemView);

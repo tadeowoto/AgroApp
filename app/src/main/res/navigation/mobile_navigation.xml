@@ -103,6 +103,9 @@
         <action
             android:id="@+id/action_loteFragment_to_gestionFragment"
             app:destination="@id/gestionFragment" />
+        <action
+            android:id="@+id/action_loteFragment_to_detalleLoteFragment"
+            app:destination="@id/detalleLoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/recursoFragment"
@@ -138,6 +141,15 @@
         <action
             android:id="@+id/action_agregarCampoFragment_to_campoFragment"
             app:destination="@id/campoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleLoteFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.lote.detalleLote.DetalleLoteFragment"
+        android:label="fragment_detalle_lote"
+        tools:layout="@layout/fragment_detalle_lote" >
+        <action
+            android:id="@+id/action_detalleLoteFragment_to_loteFragment"
+            app:destination="@id/loteFragment" />
     </fragment>
 
 </navigation>

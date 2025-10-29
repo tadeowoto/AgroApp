@@ -7,32 +7,52 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.agroapp.R;
+import com.example.agroapp.databinding.FragmentLoteBinding;
+import com.example.agroapp.model.campo.CampoAdapter;
 
 public class LoteFragment extends Fragment {
 
-    private LoteViewModel mViewModel;
+    private LoteViewModel vm;
+    private FragmentLoteBinding binding;
 
-    public static LoteFragment newInstance() {
-        return new LoteFragment();
-    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lote, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(LoteViewModel.class);
+
+        binding = FragmentLoteBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+
+
+        vm.getListaCampos().observe(getViewLifecycleOwner() , campos -> {
+            CampoAdapter adapter = new CampoAdapter(campos, getLayoutInflater(), (campo, view) -> {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("idCampo", campo.getId_campo());
+                Navigation.findNavController(view).navigate(R.id.action_loteFragment_to_detalleLoteFragment, bundle);
+            });
+
+            binding.lista.setLayoutManager(new GridLayoutManager(getContext(), 1));
+            binding.lista.setAdapter(adapter);
+        });
+
+
+        vm.cargarCampos();
+
+
+        return root;
+
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(LoteViewModel.class);
-        // TODO: Use the ViewModel
-    }
+
 
 }
