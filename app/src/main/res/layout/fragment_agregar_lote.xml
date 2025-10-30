@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/colorBackground"
+    tools:context=".menu.ui.gestion.lote.agregarLote.AgregarLoteFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutNombreCampo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Campo al que se agrega el lote"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombreCampo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:enabled="false"
+                android:textColor="@color/colorTextSecondary"
+                tools:text="Campo La Esperanza" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutNombreLote"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del lote"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/layoutNombreCampo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombreLote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                tools:text="Lote Norte" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCultivo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Cultivo"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/layoutNombreLote"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCultivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                tools:text="Soja" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutSuperficie"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Superficie (ha)"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/layoutCultivo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSuperficie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                tools:text="120.5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGuardarLote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Guardar lote"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutSuperficie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

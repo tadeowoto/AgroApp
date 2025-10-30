@@ -56,6 +56,10 @@ public class ApiCLient {
         @GET("/api/campos/usuario")
         Call<List<Campo>> obtenerCampos(@Header("Authorization") String token);
 
+        @GET("api/campos/{id_campo}")
+        Call<Campo> obtenerCampoPorId(@Header("Authorization") String token, @Path("id_campo") int id_campo);
+
+
         @POST("/api/campos/editar/{id_campo}")
         Call<Campo> actualizarCampo(@Header("Authorization") String token, @Path("id_campo") int id_campo, @Body Campo campo);
 
@@ -68,6 +72,9 @@ public class ApiCLient {
         @POST("/api/lotes/editar/{id_lote}")
         Call<Lote> actualizarLote(@Header("Authorization") String token, @Path("id_lote") int id_lote, @Body LoteDto lote);
 
+        //TODO --> PONERLE DATETIME NOW A LA FECHA DE CREACION
+        @POST("/api/lotes/agregar")
+        Call<JsonObject> agregarLote(@Header("Authorization") String token, @Body LoteDto lote);
 
     }
 

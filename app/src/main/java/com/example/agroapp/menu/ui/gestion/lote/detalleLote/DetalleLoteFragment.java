@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -45,6 +46,13 @@ public class DetalleLoteFragment extends Fragment {
 
         vm.getmError().observe(getViewLifecycleOwner(), error -> {
             Snackbar.make(root, error, Snackbar.LENGTH_SHORT).show();
+        });
+
+        binding.btnAgregarLote.setOnClickListener( v -> {
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("idCampo", idCampo);
+            Navigation.findNavController(root).navigate(R.id.action_detalleLoteFragment_to_agregarLoteFragment, bundle);
         });
 
 

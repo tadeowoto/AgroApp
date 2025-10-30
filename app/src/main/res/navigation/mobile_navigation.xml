@@ -153,6 +153,9 @@
         <action
             android:id="@+id/action_detalleLoteFragment_to_informacionLoteFragment"
             app:destination="@id/informacionLoteFragment" />
+        <action
+            android:id="@+id/action_detalleLoteFragment_to_agregarLoteFragment"
+            app:destination="@id/agregarLoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/informacionLoteFragment"
@@ -161,6 +164,15 @@
         tools:layout="@layout/fragment_informacion_lote" >
         <action
             android:id="@+id/action_informacionLoteFragment_to_detalleLoteFragment"
+            app:destination="@id/detalleLoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarLoteFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.lote.agregarLote.AgregarLoteFragment"
+        android:label="fragment_agregar_lote"
+        tools:layout="@layout/fragment_agregar_lote" >
+        <action
+            android:id="@+id/action_agregarLoteFragment_to_detalleLoteFragment"
             app:destination="@id/detalleLoteFragment" />
     </fragment>
 
