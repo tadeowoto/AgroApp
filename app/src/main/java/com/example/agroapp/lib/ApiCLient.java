@@ -82,6 +82,7 @@ public class ApiCLient {
         Call<List<Actividad>> obtenerActividadesDelUsuario(@Header("Authorization") String token);
 
 
+
     }
 
 }

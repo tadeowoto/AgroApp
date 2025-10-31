@@ -13,26 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.agroapp.R;
+import com.example.agroapp.databinding.FragmentDetalleActividadBinding;
 
 public class DetalleActividadFragment extends Fragment {
 
-    private DetalleActividadViewModel mViewModel;
+    private DetalleActividadViewModel vm;
+    private FragmentDetalleActividadBinding binding;
 
-    public static DetalleActividadFragment newInstance() {
-        return new DetalleActividadFragment();
-    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_detalle_actividad, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(DetalleActividadViewModel.class);
+
+        binding = FragmentDetalleActividadBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        return root;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(DetalleActividadViewModel.class);
-        // TODO: Use the ViewModel
-    }
+
 
 }
