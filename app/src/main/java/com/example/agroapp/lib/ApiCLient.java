@@ -4,7 +4,10 @@ import com.example.agroapp.model.Usuario;
 import com.example.agroapp.model.actividad.Actividad;
 import com.example.agroapp.model.campo.Campo;
 import com.example.agroapp.model.dto.LoteDto;
+import com.example.agroapp.model.insumo.Insumo;
 import com.example.agroapp.model.lote.Lote;
+import com.example.agroapp.model.recurso.Recurso;
+import com.example.agroapp.model.tipoActividad.TipoActividad;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -80,6 +83,19 @@ public class ApiCLient {
 
         @GET("/api/actividades/usuario")
         Call<List<Actividad>> obtenerActividadesDelUsuario(@Header("Authorization") String token);
+
+        @GET("/api/insumos/{id_insumo}")
+        Call<Insumo> obtenerInsumoPorId(@Header("Authorization") String token, @Path("id_insumo") int id_insumo);
+
+        @GET("/api/recursos/{id_recurso}")
+        Call<Recurso> obtenerRecursoPorId(@Header("Authorization") String token, @Path("id_recurso") int id_recurso);
+
+        @GET("/api/lote/{id_lote}")
+        Call<Lote> obtenerLotePorId(@Header("Authorization") String token, @Path("id_lote") int id_lote);
+
+        @GET("/api/tipoactividades/{id_tipo_actividad}")
+        Call<TipoActividad> obtenerActividadPorId(@Header("Authorization") String token, @Path("id_tipo_actividad") int id_tipo_actividad);
+
 
 
 
