@@ -7,32 +7,46 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.agroapp.R;
+import com.example.agroapp.databinding.FragmentActividadBinding;
+import com.example.agroapp.model.actividad.ActividadAdapter;
 
 public class ActividadFragment extends Fragment {
 
-    private ActividadViewModel mViewModel;
+    private ActividadViewModel vm;
+    private FragmentActividadBinding binding;
 
-    public static ActividadFragment newInstance() {
-        return new ActividadFragment();
-    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_actividad, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ActividadViewModel.class);
+
+        binding = FragmentActividadBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+
+        vm.cargarActividades();
+
+        vm.getListaActividades().observe(getViewLifecycleOwner(), actividades -> {
+            ActividadAdapter adapter = new ActividadAdapter(actividades, getLayoutInflater());
+            GridLayoutManager manager = new GridLayoutManager(getContext(), 1);
+            binding.lista.setLayoutManager(manager);
+            binding.lista.setAdapter(adapter);
+        });
+
+
+
+
+        return root;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ActividadViewModel.class);
-        // TODO: Use the ViewModel
-    }
+
 
 }

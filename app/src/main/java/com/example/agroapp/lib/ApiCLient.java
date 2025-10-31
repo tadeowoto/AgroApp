@@ -1,6 +1,7 @@
 package com.example.agroapp.lib;
 
 import com.example.agroapp.model.Usuario;
+import com.example.agroapp.model.actividad.Actividad;
 import com.example.agroapp.model.campo.Campo;
 import com.example.agroapp.model.dto.LoteDto;
 import com.example.agroapp.model.lote.Lote;
@@ -75,6 +76,11 @@ public class ApiCLient {
         //TODO --> PONERLE DATETIME NOW A LA FECHA DE CREACION
         @POST("/api/lotes/agregar")
         Call<JsonObject> agregarLote(@Header("Authorization") String token, @Body LoteDto lote);
+
+
+        @GET("/api/actividades/usuario")
+        Call<List<Actividad>> obtenerActividadesDelUsuario(@Header("Authorization") String token);
+
 
     }
 
