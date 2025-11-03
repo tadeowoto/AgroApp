@@ -212,21 +212,21 @@
                     android:id="@+id/tvNombreInsumo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre: Urea"
+                    android:text="Nombre: ---"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvTipoInsumo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tipo: Fertilizante"
+                    android:text="Tipo: ---"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvStockInsumo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Stock: 32.422kg"
+                    android:text="Stock: ---"
                     android:textSize="16sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -260,14 +260,14 @@
                     android:id="@+id/tvRecursoNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Operario: Juan Pérez"
+                    android:text="Operario: ---"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvMarca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Marca: Jhonn Dree"
+                    android:text="Marca: ---"
                     android:textSize="16sp" />
 
             </LinearLayout>

@@ -61,8 +61,12 @@ public class DetalleActividadViewModel extends AndroidViewModel {
         mActividad.postValue(a);
         cargarLotePorId(a.getId_lote());
         cargarTipoDeActividadPorId(a.getId_tipo_actividad());
-        cargarInsumoPorId(a.getId_insumo());
-        cargarRecursoPorId(a.getId_recurso());
+        if(a.getId_insumo() != null){
+            cargarInsumoPorId(a.getId_insumo());
+        }
+        if(a.getId_recurso() != null){
+            cargarRecursoPorId(a.getId_recurso());
+        }
     }
 
     private void cargarTipoDeActividadPorId(int idTipoActividad) {
