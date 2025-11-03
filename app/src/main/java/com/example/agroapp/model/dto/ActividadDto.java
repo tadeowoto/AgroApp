@@ -1,43 +1,17 @@
-package com.example.agroapp.model.actividad;
-
+package com.example.agroapp.model.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Actividad implements Serializable {
-
-    private Integer idActividad;
-    private Integer id_lote;
-
-    private Integer id_insumo;
-    private Integer id_recurso;
-
-    private Integer id_tipo_actividad;
-    private String descripcion;
-    private Date fecha_inicio;
-    private Date fecha_fin;
-    private double cantidad_insumo;
-    private double costo;
-
-    public Actividad(Integer idActividad, Integer id_lote, Integer id_insumo, Integer id_recurso, Integer id_tipo_actividad, String descripcion, Date fecha_inicio, Date fecha_fin, double cantidad_insumo, double costo) {
-        this.idActividad = idActividad;
-        this.id_lote = id_lote;
-        this.id_insumo = id_insumo;
-        this.id_recurso = id_recurso;
-        this.id_tipo_actividad = id_tipo_actividad;
-        this.descripcion = descripcion;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
-        this.cantidad_insumo = cantidad_insumo;
-        this.costo = costo;
-    }
-
-    public Integer getIdActividad() {
-        return idActividad;
-    }
-
-    public void setIdActividad(Integer idActividad) {
-        this.idActividad = idActividad;
-    }
+public class ActividadDto  implements Serializable {
+    public Integer id_lote;
+    public Integer id_insumo;
+    public Integer id_recurso;
+    public Integer id_tipo_actividad;
+    public String descripcion;
+    public Date fecha_inicio;
+    public Date fecha_fin;
+    public double cantidad_insumo;
+    public double costo;
 
     public Integer getId_lote() {
         return id_lote;
@@ -108,6 +82,18 @@ public class Actividad implements Serializable {
     }
 
     public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public ActividadDto(Integer id_lote, Integer id_insumo, Integer id_recurso, Integer id_tipo_actividad, String descripcion, Date fecha_inicio, Date fecha_fin, double cantidad_insumo, double costo) {
+        this.id_lote = id_lote;
+        this.id_insumo = id_insumo;
+        this.id_recurso = id_recurso;
+        this.id_tipo_actividad = id_tipo_actividad;
+        this.descripcion = descripcion;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.cantidad_insumo = cantidad_insumo;
         this.costo = costo;
     }
 }

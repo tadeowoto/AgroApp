@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_actividadFragment_to_detalleActividadFragment"
             app:destination="@id/detalleActividadFragment" />
+        <action
+            android:id="@+id/action_actividadFragment_to_agregarActividadFragment"
+            app:destination="@id/agregarActividadFragment" />
     </fragment>
     <fragment
         android:id="@+id/campoFragment"
@@ -185,6 +188,14 @@
         tools:layout="@layout/fragment_detalle_actividad" >
         <action
             android:id="@+id/action_detalleActividadFragment_to_actividadFragment"
+            app:destination="@id/actividadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarActividadFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.actividad.agregarActividad.AgregarActividadFragment"
+        android:label="AgregarActividadFragment" >
+        <action
+            android:id="@+id/action_agregarActividadFragment_to_actividadFragment"
             app:destination="@id/actividadFragment" />
     </fragment>
 

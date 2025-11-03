@@ -97,6 +97,20 @@ public class ApiCLient {
         Call<TipoActividad> obtenerActividadPorId(@Header("Authorization") String token, @Path("id_tipo_actividad") int id_tipo_actividad);
 
 
+        @GET("/api/recursos")
+        Call<List<Recurso>> obtenerRecursosDelUsuario(@Header("Authorization") String token);
+
+        @GET("/api/lotes")
+        Call<List<Lote>> obtenerLotesDelUsuario(@Header("Authorization") String token);
+
+        @GET("/api/insumos")
+        Call<List<Insumo>> obtenerInsumosDelUsuario(@Header("Authorization") String token);
+
+        @GET("/api/tipoactividades")
+        Call<List<TipoActividad>> obtenerTipoActividades(@Header("Authorization") String token);
+
+        @POST("api/actividades/agregar")
+        Call<JsonObject> agregarActividad(@Header("Authorization") String token, @Body Actividad actividad);
 
 
     }

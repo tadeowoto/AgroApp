@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -41,7 +42,9 @@ public class ActividadFragment extends Fragment {
             binding.lista.setAdapter(adapter);
         });
 
-
+        binding.btnAgregarActividad.setOnClickListener( v->{
+            Navigation.findNavController(v).navigate(R.id.action_actividadFragment_to_agregarActividadFragment);
+        });
 
 
         return root;
