@@ -19,6 +19,13 @@ public class Recurso implements Serializable {
         this.modelo = modelo;
         this.estado = estado;
     }
+    public Recurso( String nombre, String tipo, String marca, String modelo, String estado) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.estado = estado;
+    }
 
     public int getId_recurso() {
         return id_recurso;

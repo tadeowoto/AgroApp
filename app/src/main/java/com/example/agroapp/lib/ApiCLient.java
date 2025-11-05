@@ -112,6 +112,13 @@ public class ApiCLient {
         @POST("api/actividades/agregar")
         Call<JsonObject> agregarActividad(@Header("Authorization") String token, @Body Actividad actividad);
 
+        @POST("/api/recursos/agregar")
+        Call<JsonObject> agregarRecurso(@Header("Authorization") String token, @Body Recurso recurso);
+
+        @PUT("/api/recursos/actualizar/{id_recurso}")
+        Call<JsonObject> actualizarRecurso(@Header("Authorization") String token, @Path("id_recurso") int id_recurso, @Body Recurso recurso);
+
+
 
     }
 

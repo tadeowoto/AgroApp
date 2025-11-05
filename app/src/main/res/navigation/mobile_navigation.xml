@@ -121,6 +121,12 @@
         <action
             android:id="@+id/action_recursoFragment_to_gestionFragment"
             app:destination="@id/gestionFragment" />
+        <action
+            android:id="@+id/action_recursoFragment_to_agregarRecursoFragment"
+            app:destination="@id/agregarRecursoFragment" />
+        <action
+            android:id="@+id/action_recursoFragment_to_editarRecursoFragment"
+            app:destination="@id/editarRecursoFragment" />
     </fragment>
     <fragment
         android:id="@+id/cambiarPasswordFragment"
@@ -197,6 +203,23 @@
         <action
             android:id="@+id/action_agregarActividadFragment_to_actividadFragment"
             app:destination="@id/actividadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarRecursoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.recurso.agregarRecurso.AgregarRecursoFragment"
+        android:label="fragment_agregar_recurso"
+        tools:layout="@layout/fragment_agregar_recurso" >
+        <action
+            android:id="@+id/action_agregarRecursoFragment_to_recursoFragment"
+            app:destination="@id/recursoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarRecursoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.recurso.editarRecurso.EditarRecursoFragment"
+        android:label="EditarRecursoFragment" >
+        <action
+            android:id="@+id/action_editarRecursoFragment_to_recursoFragment"
+            app:destination="@id/recursoFragment" />
     </fragment>
 
 </navigation>
