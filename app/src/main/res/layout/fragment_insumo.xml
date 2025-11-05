@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootInsumos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".menu.ui.gestion.insumo.InsumoFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:padding="8dp"
+        tools:listitem="@layout/item_insumo" />
 
-</FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAgregarInsumo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Agregar campo"
+        android:src="@android:drawable/ic_input_add"
+        app:fabSize="normal"
+        app:tint="@android:color/white"
+        app:backgroundTint="?attr/colorPrimary"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        app:elevation="8dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

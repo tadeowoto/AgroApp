@@ -7,32 +7,48 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.agroapp.R;
+import com.example.agroapp.databinding.FragmentInsumoBinding;
+import com.example.agroapp.model.insumo.InsumoAdapter;
 
 public class InsumoFragment extends Fragment {
 
-    private InsumoViewModel mViewModel;
+    private InsumoViewModel vm;
+    private FragmentInsumoBinding binding;
 
-    public static InsumoFragment newInstance() {
-        return new InsumoFragment();
-    }
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_insumo, container, false);
-    }
+
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(InsumoViewModel.class);
-        // TODO: Use the ViewModel
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().getApplication()).create(InsumoViewModel.class);
+        binding = FragmentInsumoBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        vm.cargarLista();
+
+        vm.getListaInsumo().observe(getViewLifecycleOwner(), insumos -> {
+            GridLayoutManager manager = new GridLayoutManager(getContext(), 1);
+            InsumoAdapter adapter = new InsumoAdapter(insumos, getLayoutInflater());
+            binding.lista.setLayoutManager(manager);
+            binding.lista.setAdapter(adapter);
+        });
+
+
+
+
+        return root;
+
     }
+
+
+
+
 
 }

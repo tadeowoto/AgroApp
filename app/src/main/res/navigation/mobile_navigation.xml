@@ -100,6 +100,12 @@
         <action
             android:id="@+id/action_insumoFragment_to_gestionFragment"
             app:destination="@id/gestionFragment" />
+        <action
+            android:id="@+id/action_insumoFragment_to_agregarInsumoFragment"
+            app:destination="@id/agregarInsumoFragment" />
+        <action
+            android:id="@+id/action_insumoFragment_to_detalleInsumoFragment"
+            app:destination="@id/detalleInsumoFragment" />
     </fragment>
     <fragment
         android:id="@+id/loteFragment"
@@ -220,6 +226,22 @@
         <action
             android:id="@+id/action_editarRecursoFragment_to_recursoFragment"
             app:destination="@id/recursoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarInsumoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.insumo.agregarInsumo.AgregarInsumoFragment"
+        android:label="AgregarInsumoFragment" >
+        <action
+            android:id="@+id/action_agregarInsumoFragment_to_insumoFragment"
+            app:destination="@id/insumoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleInsumoFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.insumo.detalleInsumo.DetalleInsumoFragment"
+        android:label="DetalleInsumoFragment" >
+        <action
+            android:id="@+id/action_detalleInsumoFragment_to_insumoFragment"
+            app:destination="@id/insumoFragment" />
     </fragment>
 
 </navigation>
