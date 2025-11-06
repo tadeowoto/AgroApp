@@ -119,36 +119,70 @@ public class DetalleInsumoViewModel extends AndroidViewModel {
     }
 
 
-    public boolean valido ( String nombre, String tipo, String unidad, String stock, String fechaVenc){
+    public boolean valido(String nombre, String tipo, String unidad, String stock, String fechaVenc) {
         boolean valido = true;
-        if (nombre.isEmpty()){
-            mErrorNombre.postValue("El nombre no puede estar vacio");
-            valido = false;
-        }
-        if (tipo.isEmpty()){
-            mErrorTipo.postValue("El tipo no puede estar vacio");
-            valido = false;
-        }
-        if (unidad.isEmpty()) {
-            mErrorUnidad.postValue("La unidad no puede estar vacio");
-            valido = false;
-        }
 
-        Date fechaVencimiento = null;
-
-        if (fechaVenc == null || fechaVenc.trim().isEmpty()) {
-            mErrorFechaVenc.postValue("Debe ingresar una fecha de fin");
+        if (nombre == null || nombre.trim().isEmpty()) {
+            mErrorNombre.postValue("El nombre no puede estar vacío");
             valido = false;
         } else {
-            fechaVencimiento = Services.parseFecha(fechaVenc);
+            mErrorNombre.postValue(null);
+        }
+
+        if (tipo == null || tipo.trim().isEmpty()) {
+            mErrorTipo.postValue("El tipo no puede estar vacío");
+            valido = false;
+        } else {
+            mErrorTipo.postValue(null);
+        }
+
+        if (unidad == null || unidad.trim().isEmpty()) {
+            mErrorUnidad.postValue("La unidad no puede estar vacía");
+            valido = false;
+        } else {
+            mErrorUnidad.postValue(null);
+        }
+
+        if (fechaVenc == null || fechaVenc.trim().isEmpty()) {
+            mErrorFechaVenc.postValue("Debe ingresar una fecha de vencimiento");
+            valido = false;
+        } else {
+            Date fechaVencimiento = Services.parseFecha(fechaVenc);
             if (fechaVencimiento == null) {
                 mErrorFechaVenc.postValue("Formato de fecha inválido (use dd/MM/yyyy)");
                 valido = false;
+            } else {
+                Date hoy = new Date();
+                if (!fechaVencimiento.after(hoy)) {
+                    mErrorFechaVenc.postValue("La fecha debe ser posterior al día de hoy");
+                    valido = false;
+                } else {
+                    mErrorFechaVenc.postValue(null);
+                }
             }
-            mErrorFechaVenc.postValue(null);
         }
+
+        if (stock == null || stock.trim().isEmpty()) {
+            mErrorStock.postValue("Debe ingresar el stock actual");
+            valido = false;
+        } else {
+            try {
+                double valorStock = Double.parseDouble(stock);
+                if (valorStock < 0) {
+                    mErrorStock.postValue("El stock no puede ser negativo");
+                    valido = false;
+                } else {
+                    mErrorStock.postValue(null);
+                }
+            } catch (NumberFormatException e) {
+                mErrorStock.postValue("Stock inválido, ingrese un número válido");
+                valido = false;
+            }
+        }
+
         return valido;
     }
+
 
 
     public void editarInsumo(String nombre, String tipo, String unidad, String stock, String fechaVenc) {

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -38,6 +39,10 @@ public class InsumoFragment extends Fragment {
             InsumoAdapter adapter = new InsumoAdapter(insumos, getLayoutInflater());
             binding.lista.setLayoutManager(manager);
             binding.lista.setAdapter(adapter);
+        });
+
+        binding.btnAgregarInsumo.setOnClickListener(v ->{
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_insumoFragment_to_agregarInsumoFragment);
         });
 
 

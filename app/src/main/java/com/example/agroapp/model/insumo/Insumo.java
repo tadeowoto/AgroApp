@@ -21,6 +21,13 @@ public class Insumo implements Serializable {
         this.stock_actual = stock_actual;
         this.fecha_vencimiento = fecha_vencimiento;
     }
+    public Insumo( String nombre, String tipo, String unidad, double stock_actual, Date fecha_vencimiento) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.unidad = unidad;
+        this.stock_actual = stock_actual;
+        this.fecha_vencimiento = fecha_vencimiento;
+    }
 
     public int getId_insumo() {
         return id_insumo;
