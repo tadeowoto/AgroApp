@@ -118,6 +118,13 @@ public class ApiCLient {
         @PUT("/api/recursos/actualizar/{id_recurso}")
         Call<JsonObject> actualizarRecurso(@Header("Authorization") String token, @Path("id_recurso") int id_recurso, @Body Recurso recurso);
 
+        @PUT("/api/insumos/actualizar/{id_insumo}")
+        Call<JsonObject> actualizarInsumo(@Header("Authorization") String token, @Path("id_insumo") int id_insumo, @Body Insumo insumo);
+
+
+        @POST("/api/insumos/crear")
+        Call<Insumo> crearInsumo(@Header("Authorization") String token, @Body Insumo insumo);
+
 
 
     }

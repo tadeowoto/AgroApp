@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import com.example.agroapp.R;
 import com.example.agroapp.databinding.FragmentDetalleInsumoBinding;
 import com.example.agroapp.model.insumo.Insumo;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -59,6 +60,28 @@ public class DetalleInsumoFragment extends Fragment {
             binding.spUnidad.setAdapter(adapter);
         });
 
+        vm.getError().observe(getViewLifecycleOwner(), msg -> {
+            Snackbar.make(binding.getRoot(), msg, Snackbar.LENGTH_LONG).show();
+        });
+        vm.getmExito().observe(getViewLifecycleOwner(), msg -> {
+            Snackbar.make(binding.getRoot(), msg, Snackbar.LENGTH_SHORT).show();
+        });
+
+        vm.getmErrorNombre().observe(getViewLifecycleOwner(), msg -> {
+            binding.etNombre.setError(msg);
+        });
+        vm.getmErrorTipo().observe(getViewLifecycleOwner(), msg -> {
+            binding.spTipo.setError(msg);
+        });
+        vm.getmErrorUnidad().observe(getViewLifecycleOwner(), msg -> {
+            binding.spUnidad.setError(msg);
+        });
+        vm.getmErrorStock().observe(getViewLifecycleOwner(), msg -> {
+            binding.etStock.setError(msg);
+        });
+        vm.getmErrorFechaVenc().observe(getViewLifecycleOwner(), msg -> {
+            binding.etFechaVenc.setError(msg);
+        });
 
         vm.getHabilitarCampos().observe(getViewLifecycleOwner(), habilitar -> {
             binding.etNombre.setEnabled(habilitar);
