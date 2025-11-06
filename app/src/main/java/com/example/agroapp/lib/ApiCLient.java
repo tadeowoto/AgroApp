@@ -3,6 +3,7 @@ package com.example.agroapp.lib;
 import com.example.agroapp.model.Usuario;
 import com.example.agroapp.model.actividad.Actividad;
 import com.example.agroapp.model.campo.Campo;
+import com.example.agroapp.model.cosecha.Cosecha;
 import com.example.agroapp.model.dto.LoteDto;
 import com.example.agroapp.model.insumo.Insumo;
 import com.example.agroapp.model.lote.Lote;
@@ -124,6 +125,9 @@ public class ApiCLient {
 
         @POST("/api/insumos/crear")
         Call<Insumo> crearInsumo(@Header("Authorization") String token, @Body Insumo insumo);
+
+        @GET("/api/cosechas/{id_lote}")
+        Call<List<Cosecha>> obtenerCosechasDelLote(@Header("Authorization") String token, @Path("id_lote") int id_lote);
 
 
 
