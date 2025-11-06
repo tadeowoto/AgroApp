@@ -39,7 +39,6 @@ public class CosechaFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putInt("idLote", lote.getId_lote());
-                bundle.putString("nombreLote", lote.getNombre());
                 Navigation.findNavController(binding.getRoot()).navigate(R.id.action_cosechaFragment_to_cosechasDeUnLoteFragment, bundle);
             });
 

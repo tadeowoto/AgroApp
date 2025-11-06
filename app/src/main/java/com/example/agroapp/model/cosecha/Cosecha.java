@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class Cosecha implements Serializable {
     private int id_cosecha;
     private int id_lote;
-
     private String fecha_inicio;
     private String fecha_fin;
     private double rendimiento;

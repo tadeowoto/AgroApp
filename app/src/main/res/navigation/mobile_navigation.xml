@@ -254,6 +254,18 @@
         <action
             android:id="@+id/action_cosechasDeUnLoteFragment_to_cosechaFragment"
             app:destination="@id/cosechaFragment" />
+        <action
+            android:id="@+id/action_cosechasDeUnLoteFragment_to_detalleCosechaFragment"
+            app:destination="@id/detalleCosechaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleCosechaFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.cosecha.detalleCosecha.DetalleCosechaFragment"
+        android:label="fragment_detalle_cosecha"
+        tools:layout="@layout/fragment_detalle_cosecha" >
+        <action
+            android:id="@+id/action_detalleCosechaFragment_to_cosechasDeUnLoteFragment"
+            app:destination="@id/cosechasDeUnLoteFragment" />
     </fragment>
 
 </navigation>

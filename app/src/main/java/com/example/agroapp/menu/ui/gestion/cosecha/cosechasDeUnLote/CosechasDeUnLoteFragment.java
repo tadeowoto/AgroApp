@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.agroapp.R;
 import com.example.agroapp.databinding.FragmentCosechasDeUnLoteBinding;
+import com.example.agroapp.model.cosecha.CosechaAdapter;
 
 public class CosechasDeUnLoteFragment extends Fragment {
 
@@ -27,6 +29,18 @@ public class CosechasDeUnLoteFragment extends Fragment {
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(CosechasDeUnLoteViewModel.class);
         binding = FragmentCosechasDeUnLoteBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+
+        int idLote = getArguments().getInt("idLote");
+
+        vm.cargarCosechas(idLote);
+
+        vm.getListaCosechas().observe(getViewLifecycleOwner(), lista -> {
+            CosechaAdapter adapter = new CosechaAdapter(lista, getLayoutInflater());
+            GridLayoutManager manager = new GridLayoutManager(getContext(), 1);
+            binding.lista.setLayoutManager(manager);
+            binding.lista.setAdapter(adapter);
+        });
 
 
 
