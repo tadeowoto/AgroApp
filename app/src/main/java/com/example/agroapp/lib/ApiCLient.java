@@ -148,14 +148,6 @@ public class ApiCLient {
         @GET("/api/campos/cantidad")
         Call<Integer> obtenercamposPorCantidad(@Header("Authorization") String token);
 
-        @GET("/api/cosechas/proximas")
-        Call<List<Cosecha>> obtenerCosechasProximas(@Header("Authorization") String token);
-
-        @GET("api/actividades/recientes")
-        Call<List<Actividad>> obtenerActividadesRecientes(@Header("Authorization") String token);
-
-
-
 
     }
 

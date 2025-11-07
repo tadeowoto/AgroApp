@@ -25,9 +25,6 @@ public class HomeViewModel extends AndroidViewModel {
     MutableLiveData<Integer> mRecursos = new MutableLiveData<>();
     MutableLiveData<Integer> mLotes = new MutableLiveData<>();
     MutableLiveData<Integer> mInsumos = new MutableLiveData<>();
-    MutableLiveData<List<Cosecha>> mCosechas = new MutableLiveData<>();
-    MutableLiveData<List<Actividad>> mActividades = new MutableLiveData<>();
-
     MutableLiveData<Integer> mCampos = new MutableLiveData<>();
     MutableLiveData<String> mError = new MutableLiveData<>();
 
@@ -49,15 +46,11 @@ public class HomeViewModel extends AndroidViewModel {
     public LiveData<Integer> getmInsumos() {
         return mInsumos;
     }
-    public LiveData<List<Cosecha>> getmCosechas() {
-        return mCosechas;
-    }
+
     public LiveData<String> getmError() {
         return mError;
     }
-    public LiveData<List<Actividad>> getmActividades() {
-        return mActividades;
-    }
+
 
     public void cargarHome() {
 
@@ -133,53 +126,6 @@ public class HomeViewModel extends AndroidViewModel {
             });
         }catch (Exception e){
             Toast.makeText(getApplication(), "Error en insumos: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-
-        Call<List<Cosecha>> callCosechas = service.obtenerCosechasProximas("Bearer " + token);
-        try{
-            callCosechas.enqueue(new Callback<List<Cosecha>>() {
-                @Override
-                public void onResponse(Call<List<Cosecha>> call, Response<List<Cosecha>> response) {
-                    if (response.isSuccessful()) {
-                        mCosechas.postValue(response.body());
-                    }
-                    else {
-                        mError.postValue("Error al obtener cosechas");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<Cosecha>> call, Throwable t) {
-                    mError.postValue("Error al obtener cosechas");
-                }
-            });
-
-        } catch (Exception e) {
-            Toast.makeText(getApplication(), "Error en cosechas: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-
-        Call<List<Actividad>> callActividades = service.obtenerActividadesRecientes("Bearer " + token);
-
-        try{
-            callActividades.enqueue(new Callback<List<Actividad>>() {
-                @Override
-                public void onResponse(Call<List<Actividad>> call, Response<List<Actividad>> response) {
-                    if (response.isSuccessful()) {
-                        mActividades.postValue(response.body());
-                    }
-                    else {
-                        mError.postValue("Error al obtener actividades");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<Actividad>> call, Throwable t) {
-                    mError.postValue("Error al obtener actividades");
-                }
-            });
-
-        } catch (Exception e) {
-            Toast.makeText(getApplication(), "Error en actividades: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         Call<Integer> callCampos = service.obtenercamposPorCantidad("Bearer " + token);

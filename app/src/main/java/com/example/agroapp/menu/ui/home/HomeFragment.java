@@ -44,13 +44,6 @@ public class HomeFragment extends Fragment {
             binding.tvCamposActivos.setText(String.valueOf(campos));
         });
 
-        vm.getmCosechas().observe(getViewLifecycleOwner(), cosechas -> {
-            CosechaAdapter adapter = new CosechaAdapter(cosechas, getLayoutInflater());
-            GridLayoutManager manager = new GridLayoutManager(getContext(), 1);
-            binding.rvCosechas.setLayoutManager(manager);
-            binding.rvCosechas.setAdapter(adapter);
-        });
-
         binding.btnAgregarActividad.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_nav_home_to_agregarActividadFragment);
         });
