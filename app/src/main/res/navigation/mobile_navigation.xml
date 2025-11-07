@@ -257,6 +257,9 @@
         <action
             android:id="@+id/action_cosechasDeUnLoteFragment_to_detalleCosechaFragment"
             app:destination="@id/detalleCosechaFragment" />
+        <action
+            android:id="@+id/action_cosechasDeUnLoteFragment_to_agregarCosechaFragment2"
+            app:destination="@id/agregarCosechaFragment" />
     </fragment>
     <fragment
         android:id="@+id/detalleCosechaFragment"
@@ -265,6 +268,15 @@
         tools:layout="@layout/fragment_detalle_cosecha" >
         <action
             android:id="@+id/action_detalleCosechaFragment_to_cosechasDeUnLoteFragment"
+            app:destination="@id/cosechasDeUnLoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarCosechaFragment"
+        android:name="com.example.agroapp.menu.ui.gestion.cosecha.agregarCosecha.AgregarCosechaFragment"
+        android:label="fragment_agregar_cosecha"
+        tools:layout="@layout/fragment_agregar_cosecha" >
+        <action
+            android:id="@+id/action_agregarCosechaFragment_to_cosechasDeUnLoteFragment2"
             app:destination="@id/cosechasDeUnLoteFragment" />
     </fragment>
 

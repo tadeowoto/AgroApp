@@ -27,13 +27,22 @@
         android:layout_marginTop="40dp"
         android:visibility="gone" />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAgregarCosecha"
+        android:id="@+id/btnGuardarNuevaCosecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="Agregar cosecha"
-        android:layout_margin="20dp"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:contentDescription="Agregar Cosecha"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="?attr/colorPrimary"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:tint="@android:color/white"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="355dp"
+        tools:layout_editor_absoluteY="659dp" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -132,6 +132,9 @@ public class ApiCLient {
         @PUT("/api/cosechas/actualizar/{id_cosecha}")
         Call<JsonObject> actualizarCosecha(@Header("Authorization") String token, @Path("id_cosecha") int id_cosecha, @Body Cosecha cosecha);
 
+        @POST("/api/cosechas/agregar")
+        Call<JsonObject> agregarCosecha(@Header("Authorization") String token, @Body Cosecha cosecha);
+
 
 
 

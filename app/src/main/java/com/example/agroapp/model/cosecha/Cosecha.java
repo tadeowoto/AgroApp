@@ -20,6 +20,15 @@ public class Cosecha implements Serializable {
         this.observaciones = observaciones;
     }
 
+    public Cosecha( int id_lote, Date fecha_inicio, Date fecha_fin, double rendimiento, String observaciones) {
+        this.id_cosecha = id_cosecha;
+        this.id_lote = id_lote;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.rendimiento = rendimiento;
+        this.observaciones = observaciones;
+    }
+
     public int getId_cosecha() {
         return id_cosecha;
     }
