@@ -135,6 +135,25 @@ public class ApiCLient {
         @POST("/api/cosechas/agregar")
         Call<JsonObject> agregarCosecha(@Header("Authorization") String token, @Body Cosecha cosecha);
 
+        @GET("/api/recursos/cantidad")
+        Call<Integer> obtenerRecursosPorCantidad(@Header("Authorization") String token);
+
+        @GET("/api/lotes/cantidad")
+        Call<Integer> obtenerLotesPorCantidad(@Header("Authorization") String token);
+
+        @GET("/api/insumos/cantidad")
+        Call<Integer> obtenerInsumosPorCantidad(@Header("Authorization") String token);
+
+
+        @GET("/api/campos/cantidad")
+        Call<Integer> obtenercamposPorCantidad(@Header("Authorization") String token);
+
+        @GET("/api/cosechas/proximas")
+        Call<List<Cosecha>> obtenerCosechasProximas(@Header("Authorization") String token);
+
+        @GET("api/actividades/recientes")
+        Call<List<Actividad>> obtenerActividadesRecientes(@Header("Authorization") String token);
+
 
 
 

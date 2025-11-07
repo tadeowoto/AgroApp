@@ -9,7 +9,17 @@
         android:id="@+id/nav_home"
         android:name="com.example.agroapp.menu.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_agregarActividadFragment"
+            app:destination="@id/agregarActividadFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_recursoFragment"
+            app:destination="@id/recursoFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_insumoFragment"
+            app:destination="@id/insumoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gestionFragment"
         android:name="com.example.agroapp.menu.ui.gestion.GestionFragment"
@@ -109,6 +119,9 @@
         <action
             android:id="@+id/action_insumoFragment_to_detalleInsumoFragment"
             app:destination="@id/detalleInsumoFragment" />
+        <action
+            android:id="@+id/action_insumoFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/loteFragment"
@@ -136,6 +149,9 @@
         <action
             android:id="@+id/action_recursoFragment_to_editarRecursoFragment"
             app:destination="@id/editarRecursoFragment" />
+        <action
+            android:id="@+id/action_recursoFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/cambiarPasswordFragment"
@@ -212,6 +228,9 @@
         <action
             android:id="@+id/action_agregarActividadFragment_to_actividadFragment"
             app:destination="@id/actividadFragment" />
+        <action
+            android:id="@+id/action_agregarActividadFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/agregarRecursoFragment"
