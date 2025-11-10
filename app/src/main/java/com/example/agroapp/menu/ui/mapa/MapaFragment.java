@@ -44,13 +44,9 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         vm.getCampos().observe(getViewLifecycleOwner(), campos -> {
-            if (campos == null || campos.isEmpty()) {
-                return;
-            }
             mMap.clear();
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             for (Campo campo : campos) {
-
                 LatLng ubicacion = new LatLng(campo.getLatitud(), campo.getLongitud());
 
                 mMap.addMarker(new MarkerOptions()
