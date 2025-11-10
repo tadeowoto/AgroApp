@@ -1,46 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_campo"
+    style="@style/App.CardView.Default"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="8dp"
-    android:layout_marginHorizontal="4dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackground"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="3dp"
-    app:strokeWidth="0dp">
+    android:foreground="?attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-
-        <FrameLayout
-            android:id="@+id/flIcono"
+        <ImageView
+            android:id="@+id/ivIconoCampo"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/bg_icono_campo"
+            android:contentDescription="@string/icono_de_campo"
+            android:padding="12dp"
+            android:src="@drawable/ic_landscape"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <ImageView
-                android:id="@+id/ivIconoCampo"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_landscape"
-                app:tint="@color/colorPrimary"
-                android:contentDescription="@string/icono_de_campo" />
-        </FrameLayout>
-
+            app:tint="@color/colorPrimary" />
 
         <ImageView
             android:id="@+id/ivChevron"
@@ -53,7 +39,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/ver_detalle_campo" />
 
-
         <TextView
             android:id="@+id/tvNombreCampo"
             android:layout_width="0dp"
@@ -65,8 +50,8 @@
             android:textStyle="bold"
             android:textColor="@color/colorTextPrimary"
             app:layout_constraintEnd_toStartOf="@id/ivChevron"
-            app:layout_constraintStart_toEndOf="@id/flIcono"
-            app:layout_constraintTop_toTopOf="@id/flIcono" />
+            app:layout_constraintStart_toEndOf="@id/ivIconoCampo"
+            app:layout_constraintTop_toTopOf="@id/ivIconoCampo" />
 
         <TextView
             android:id="@+id/tvUbicacionCampo"
@@ -89,7 +74,7 @@
             android:textColor="@color/colorTextSecondary"
             app:layout_constraintStart_toStartOf="@id/tvNombreCampo"
             app:layout_constraintTop_toBottomOf="@id/tvUbicacionCampo"
-            app:layout_constraintBottom_toBottomOf="@id/flIcono"
+            app:layout_constraintBottom_toBottomOf="@id/ivIconoCampo"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

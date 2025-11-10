@@ -2,45 +2,40 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutCampos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/colorBackground">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:clipToPadding="false"
+        android:padding="12dp"
+        android:paddingBottom="80dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_campo" />
 
-        <TextView
-            android:id="@+id/tvTituloCampos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mis Campos"
-            android:textColor="@android:color/black"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:paddingBottom="16dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/lista"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:scrollbars="vertical"
-            android:paddingBottom="80dp" />
-
-    </LinearLayout>
-
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aún no has agregado campos."
+        android:textSize="16sp"
+        android:textColor="@color/colorTextSecondary"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAgregarCampo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Agregar campo"
-        android:src="@android:drawable/ic_input_add"
+        app:srcCompat="@drawable/ic_add"
         app:fabSize="normal"
         app:tint="@android:color/white"
         app:backgroundTint="?attr/colorPrimary"
@@ -49,5 +44,4 @@
         app:elevation="8dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
