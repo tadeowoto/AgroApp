@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.agroapp.menu.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Menu Principal"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_agregarActividadFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/gestionFragment"
         android:name="com.example.agroapp.menu.ui.gestion.GestionFragment"
-        android:label="fragment_gestion"
+        android:label="Gestion Integral"
         tools:layout="@layout/fragment_gestion" >
         <action
             android:id="@+id/action_gestionFragment_to_actividadFragment"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.agroapp.menu.ui.perfil.PerfilFragment"
-        android:label="fragment_perfil"
+        android:label="Mi Perfil"
         tools:layout="@layout/fragment_perfil" >
         <action
             android:id="@+id/action_perfilFragment_to_cambiarPasswordFragment"
@@ -56,17 +56,17 @@
     <fragment
         android:id="@+id/salirFragment"
         android:name="com.example.agroapp.menu.ui.salir.SalirFragment"
-        android:label="fragment_salir"
+        android:label="Salir"
         tools:layout="@layout/fragment_salir" />
     <fragment
         android:id="@+id/mapaFragment"
         android:name="com.example.agroapp.menu.ui.mapa.MapaFragment"
-        android:label="fragment_mapa"
+        android:label="Mis Campos"
         tools:layout="@layout/fragment_mapa" />
     <fragment
         android:id="@+id/actividadFragment"
         android:name="com.example.agroapp.menu.ui.gestion.actividad.ActividadFragment"
-        android:label="fragment_actividad"
+        android:label="Actividades"
         tools:layout="@layout/fragment_actividad" >
         <action
             android:id="@+id/action_actividadFragment_to_gestionFragment"
@@ -81,7 +81,7 @@
     <fragment
         android:id="@+id/campoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.campo.CampoFragment"
-        android:label="fragment_campo"
+        android:label="Mis Campos"
         tools:layout="@layout/fragment_campo" >
         <action
             android:id="@+id/action_campoFragment_to_gestionFragment"
@@ -96,7 +96,7 @@
     <fragment
         android:id="@+id/cosechaFragment"
         android:name="com.example.agroapp.menu.ui.gestion.cosecha.CosechaFragment"
-        android:label="fragment_cosecha"
+        android:label="Mis Cosechas"
         tools:layout="@layout/fragment_cosecha" >
         <action
             android:id="@+id/action_cosechaFragment_to_gestionFragment"
@@ -108,7 +108,7 @@
     <fragment
         android:id="@+id/insumoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.insumo.InsumoFragment"
-        android:label="fragment_insumo"
+        android:label="Mis insumos"
         tools:layout="@layout/fragment_insumo" >
         <action
             android:id="@+id/action_insumoFragment_to_gestionFragment"
@@ -126,7 +126,7 @@
     <fragment
         android:id="@+id/loteFragment"
         android:name="com.example.agroapp.menu.ui.gestion.lote.LoteFragment"
-        android:label="fragment_lote"
+        android:label="Mis Lotes"
         tools:layout="@layout/fragment_lote" >
         <action
             android:id="@+id/action_loteFragment_to_gestionFragment"
@@ -138,7 +138,7 @@
     <fragment
         android:id="@+id/recursoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.recurso.RecursoFragment"
-        android:label="fragment_recurso"
+        android:label="Mis Recursos"
         tools:layout="@layout/fragment_recurso" >
         <action
             android:id="@+id/action_recursoFragment_to_gestionFragment"
@@ -156,7 +156,7 @@
     <fragment
         android:id="@+id/cambiarPasswordFragment"
         android:name="com.example.agroapp.menu.ui.perfil.cambiarPass.CambiarPasswordFragment"
-        android:label="fragment_cambiar_password"
+        android:label="Cambiar Contraseña"
         tools:layout="@layout/fragment_cambiar_password" >
         <action
             android:id="@+id/action_cambiarPasswordFragment_to_perfilFragment"
@@ -165,7 +165,7 @@
     <fragment
         android:id="@+id/detalleCampoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.campo.detalleCampo.detalleCampoFragment"
-        android:label="fragment_detalle_campo"
+        android:label="Detalle del campo"
         tools:layout="@layout/fragment_detalle_campo" >
         <action
             android:id="@+id/action_detalleCampoFragment_to_campoFragment"
@@ -174,7 +174,7 @@
     <fragment
         android:id="@+id/agregarCampoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.campo.agregarCampo.AgregarCampoFragment"
-        android:label="AgregarCampoFragment" >
+        android:label="Agregar un nuevo Campo" >
         <action
             android:id="@+id/action_agregarCampoFragment_to_campoFragment"
             app:destination="@id/campoFragment" />
@@ -182,7 +182,7 @@
     <fragment
         android:id="@+id/detalleLoteFragment"
         android:name="com.example.agroapp.menu.ui.gestion.lote.detalleLote.DetalleLoteFragment"
-        android:label="fragment_detalle_lote"
+        android:label="Detalle del Lote"
         tools:layout="@layout/fragment_detalle_lote" >
         <action
             android:id="@+id/action_detalleLoteFragment_to_loteFragment"
@@ -197,7 +197,7 @@
     <fragment
         android:id="@+id/informacionLoteFragment"
         android:name="com.example.agroapp.menu.ui.gestion.lote.infoLote.InformacionLoteFragment"
-        android:label="fragment_informacion_lote"
+        android:label="Informacion del Lote"
         tools:layout="@layout/fragment_informacion_lote" >
         <action
             android:id="@+id/action_informacionLoteFragment_to_detalleLoteFragment"
@@ -206,7 +206,7 @@
     <fragment
         android:id="@+id/agregarLoteFragment"
         android:name="com.example.agroapp.menu.ui.gestion.lote.agregarLote.AgregarLoteFragment"
-        android:label="fragment_agregar_lote"
+        android:label="Agregar un Lote"
         tools:layout="@layout/fragment_agregar_lote" >
         <action
             android:id="@+id/action_agregarLoteFragment_to_detalleLoteFragment"
@@ -215,7 +215,7 @@
     <fragment
         android:id="@+id/detalleActividadFragment"
         android:name="com.example.agroapp.menu.ui.gestion.actividad.detalleActividad.DetalleActividadFragment"
-        android:label="fragment_detalle_actividad"
+        android:label="Detalle de la actividad"
         tools:layout="@layout/fragment_detalle_actividad" >
         <action
             android:id="@+id/action_detalleActividadFragment_to_actividadFragment"
@@ -224,7 +224,7 @@
     <fragment
         android:id="@+id/agregarActividadFragment"
         android:name="com.example.agroapp.menu.ui.gestion.actividad.agregarActividad.AgregarActividadFragment"
-        android:label="AgregarActividadFragment" >
+        android:label="Agregar una Actividad" >
         <action
             android:id="@+id/action_agregarActividadFragment_to_actividadFragment"
             app:destination="@id/actividadFragment" />
@@ -235,7 +235,7 @@
     <fragment
         android:id="@+id/agregarRecursoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.recurso.agregarRecurso.AgregarRecursoFragment"
-        android:label="fragment_agregar_recurso"
+        android:label="Agregar un Recurso"
         tools:layout="@layout/fragment_agregar_recurso" >
         <action
             android:id="@+id/action_agregarRecursoFragment_to_recursoFragment"
@@ -244,7 +244,7 @@
     <fragment
         android:id="@+id/editarRecursoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.recurso.editarRecurso.EditarRecursoFragment"
-        android:label="EditarRecursoFragment" >
+        android:label="Editar un Recurso" >
         <action
             android:id="@+id/action_editarRecursoFragment_to_recursoFragment"
             app:destination="@id/recursoFragment" />
@@ -252,7 +252,7 @@
     <fragment
         android:id="@+id/agregarInsumoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.insumo.agregarInsumo.AgregarInsumoFragment"
-        android:label="AgregarInsumoFragment" >
+        android:label="Agregar un Insumo" >
         <action
             android:id="@+id/action_agregarInsumoFragment_to_insumoFragment"
             app:destination="@id/insumoFragment" />
@@ -260,7 +260,7 @@
     <fragment
         android:id="@+id/detalleInsumoFragment"
         android:name="com.example.agroapp.menu.ui.gestion.insumo.detalleInsumo.DetalleInsumoFragment"
-        android:label="DetalleInsumoFragment" >
+        android:label="Detalle del Insumo" >
         <action
             android:id="@+id/action_detalleInsumoFragment_to_insumoFragment"
             app:destination="@id/insumoFragment" />
@@ -268,7 +268,7 @@
     <fragment
         android:id="@+id/cosechasDeUnLoteFragment"
         android:name="com.example.agroapp.menu.ui.gestion.cosecha.cosechasDeUnLote.CosechasDeUnLoteFragment"
-        android:label="fragment_cosechas_de_un_lote"
+        android:label="Cosechas del Lote"
         tools:layout="@layout/fragment_cosechas_de_un_lote" >
         <action
             android:id="@+id/action_cosechasDeUnLoteFragment_to_cosechaFragment"
@@ -283,7 +283,7 @@
     <fragment
         android:id="@+id/detalleCosechaFragment"
         android:name="com.example.agroapp.menu.ui.gestion.cosecha.detalleCosecha.DetalleCosechaFragment"
-        android:label="fragment_detalle_cosecha"
+        android:label="Detalle de la cosecha"
         tools:layout="@layout/fragment_detalle_cosecha" >
         <action
             android:id="@+id/action_detalleCosechaFragment_to_cosechasDeUnLoteFragment"
@@ -292,7 +292,7 @@
     <fragment
         android:id="@+id/agregarCosechaFragment"
         android:name="com.example.agroapp.menu.ui.gestion.cosecha.agregarCosecha.AgregarCosechaFragment"
-        android:label="fragment_agregar_cosecha"
+        android:label="Agregar una cosecha"
         tools:layout="@layout/fragment_agregar_cosecha" >
         <action
             android:id="@+id/action_agregarCosechaFragment_to_cosechasDeUnLoteFragment2"
