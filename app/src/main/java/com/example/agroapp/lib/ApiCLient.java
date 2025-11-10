@@ -78,7 +78,6 @@ public class ApiCLient {
         @POST("/api/lotes/editar/{id_lote}")
         Call<Lote> actualizarLote(@Header("Authorization") String token, @Path("id_lote") int id_lote, @Body LoteDto lote);
 
-        //TODO --> PONERLE DATETIME NOW A LA FECHA DE CREACION
         @POST("/api/lotes/agregar")
         Call<JsonObject> agregarLote(@Header("Authorization") String token, @Body LoteDto lote);
 
