@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:fillViewport="true"
+    android:background="@color/colorBackground"
     tools:context=".menu.ui.gestion.cosecha.agregarCosecha.AgregarCosechaFragment">
 
     <LinearLayout
@@ -17,17 +19,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agregar Cosecha"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
             android:layout_marginBottom="24dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilFechaInicio"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:hint="Fecha de inicio"
+            app:startIconDrawable="@drawable/calendar_add_on_24px"
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -35,17 +38,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date"
-                android:hint="Ej: 12/11/2025" />
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilFechaFin"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
+            android:hint="Fecha de fin"
+            app:startIconDrawable="@drawable/calendar_add_on_24px"
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -53,16 +56,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date"
-                android:hint="Ej: 20/12/2025" />
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilRendimiento"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:hint="Rendimiento (t/ha)"
+            app:startIconDrawable="@drawable/arrow_range_24px"
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -70,24 +74,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:hint="Ej: 5.4" />
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilObservaciones"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Observaciones"
+            app:startIconDrawable="@drawable/description_24px"
             android:layout_marginBottom="24dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etObservaciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:lines="3"
                 android:gravity="top|start"
-                android:hint="Ej: Cosecha exitosa con buen clima" />
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -95,9 +103,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Guardar Cosecha"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-           />
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:cornerRadius="100dp"
+            app:icon="@drawable/save_24px"
+            app:iconTint="@color/white" />
 
     </LinearLayout>
 </ScrollView>
