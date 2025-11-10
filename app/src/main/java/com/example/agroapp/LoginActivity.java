@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.agroapp.databinding.ActivityLoginBinding;
 import com.example.agroapp.menu.MenuActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         vm.getLoginExitoso().observe(this, loginExitoso -> {
-            Toast.makeText(this, "Login correcto", Toast.LENGTH_SHORT).show();
+            Snackbar.make(binding.getRoot(), "Login exitoso", Snackbar.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
         });
