@@ -9,4 +9,5 @@
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
     <color name="colorError">#D32F2F</color>
+    <color name="colorBackgroundGreenLight">#E8F5E9</color>
 </resources>
