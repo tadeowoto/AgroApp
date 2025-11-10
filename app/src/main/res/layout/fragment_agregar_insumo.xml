@@ -5,9 +5,9 @@
     android:id="@+id/scrollAgregarInsumo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="24dp"
     android:fillViewport="true"
-   >
+    android:background="@color/colorBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,66 +16,99 @@
         android:gravity="center_horizontal"
         android:paddingBottom="32dp">
 
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar Insumo"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="24dp" />
+
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNombre"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre del insumo"
-            >
+            app:startIconDrawable="@drawable/inventory_24px">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNombre"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tipo de insumo"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            android:layout_marginTop="16dp"
+            app:startIconDrawable="@drawable/list_24px"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/spTipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUnidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Unidad de medida"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            android:layout_marginTop="16dp"
+            app:startIconDrawable="@drawable/arrow_range_24px"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/spUnidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:inputType="none"
-                 />
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilStock"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:hint="Stock actual"
-            >
+            app:startIconDrawable="@drawable/inventory_24px">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etStock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFechaVenc"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fecha de vencimiento (dd/MM/yyyy)"
-            >
+            android:layout_marginTop="16dp"
+            android:hint="Fecha de vencimiento"
+            app:startIconDrawable="@drawable/calendar_add_on_24px">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etFechaVenc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date" />
+                android:inputType="date"
+                android:hint="dd/MM/yyyy"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -83,9 +116,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Guardar insumo"
-            android:textAllCaps="false"
-
-            android:layout_marginTop="16dp" />
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:cornerRadius="100dp"
+            app:icon="@drawable/save_24px"
+            app:iconTint="@color/white"
+            android:layout_marginTop="24dp" />
 
     </LinearLayout>
 
