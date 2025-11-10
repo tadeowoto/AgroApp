@@ -27,6 +27,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public class ApiCLient {
 
@@ -148,6 +149,11 @@ public class ApiCLient {
         @GET("/api/campos/cantidad")
         Call<Integer> obtenercamposPorCantidad(@Header("Authorization") String token);
 
+        @PUT("api/insumos/restarInsumo/{id_insumo}")
+        Call<JsonObject> restarInsumo(@Header("Authorization") String token, @Path("id_insumo") int id_insumo, @Body double cantidadARestar);
+
+        @GET("/api/insumos/stockActual/{id_insumo}")
+        Call<Double> obtenerCantidadInsumoParaRestar(@Header("Authorization") String token, @Path("id_insumo") int id_insumo, @Query("cantidadARestar") double cantidadARestar);
 
     }
 

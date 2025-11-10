@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.agroapp.lib.ApiCLient;
 import com.example.agroapp.lib.Services;
@@ -48,13 +47,21 @@ public class AgregarActividadViewModel extends AndroidViewModel {
     private MutableLiveData<String> mErrorCantidad = new MutableLiveData<>();
     private MutableLiveData<String> mErrorCosto = new MutableLiveData<>();
     private MutableLiveData<String> mErrorDescripcion = new MutableLiveData<>();
+    private MutableLiveData<String> mExitoRestarInsumo = new MutableLiveData<>();
 
+
+    public AgregarActividadViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public LiveData<String> getErrorFechaInicio() {
         return mErrorFechaInicio;
     }
     public LiveData<String> getErrorFechaFin() {
         return mErrorFechaFin;
+    }
+    public LiveData<String> getExitoRestarInsumo() {
+        return mExitoRestarInsumo;
     }
     public LiveData<String> getErrorCantidad() {
         return mErrorCantidad;
@@ -65,7 +72,6 @@ public class AgregarActividadViewModel extends AndroidViewModel {
     public LiveData<String> getErrorDescripcion() {
         return mErrorDescripcion;
     }
-
     public LiveData<List<Lote>> getLotes() {
         return mLotes;
     }
@@ -90,23 +96,12 @@ public class AgregarActividadViewModel extends AndroidViewModel {
     public LiveData<List<String>> getTiposNombres() {
         return mTiposNombres;
     }
-
     public LiveData<String> getmExito() {
         return mExito;
     }
     public LiveData<String> getmError() {
         return mError;
     }
-
-
-
-
-
-
-    public AgregarActividadViewModel(@NonNull Application application) {
-        super(application);
-    }
-
 
     public void cargarVistaAgregarActividad() {
         String token = Services.leerToken(getApplication());
@@ -186,57 +181,55 @@ public class AgregarActividadViewModel extends AndroidViewModel {
 
     }
 
-    public boolean validarCampos(String descripcion, String fechaInicioStr, String fechaFinStr, String cantidadStr, String costoStr) {
+    public boolean validarCampos(String descripcion, String fechaInicioStr, String fechaFinStr, String costoStr) {
         boolean valido = true;
 
-
         if (descripcion == null || descripcion.trim().isEmpty()) {
-            mErrorDescripcion.postValue("Debe ingresar una descripción");
+            mErrorDescripcion.setValue("Debe ingresar una descripción");
             valido = false;
-        }
-        if (cantidadStr == null || cantidadStr.trim().isEmpty()) {
-            mErrorCantidad.postValue("Debe ingresar una cantidad");
-            valido = false;
+        } else {
+            mErrorDescripcion.setValue(null);
         }
 
 
         if (costoStr == null || costoStr.trim().isEmpty()) {
-            mErrorCosto.postValue("Debe ingresar un costo");
+            mErrorCosto.setValue("Debe ingresar un costo");
             valido = false;
+        } else {
+            mErrorCosto.setValue(null);
         }
-
 
         Date fechaInicio = null;
         Date fechaFin = null;
 
         if (fechaInicioStr == null || fechaInicioStr.trim().isEmpty()) {
-            mErrorFechaInicio.postValue("Debe ingresar una fecha de inicio");
+            mErrorFechaInicio.setValue("Debe ingresar una fecha de inicio");
             valido = false;
         } else {
             fechaInicio = Services.parseFecha(fechaInicioStr);
             if (fechaInicio == null) {
-                mErrorFechaInicio.postValue("Formato de fecha inválido (use dd/MM/yyyy)");
+                mErrorFechaInicio.setValue("Formato de fecha inválido (use dd/MM/yyyy)");
                 valido = false;
             } else {
-                mErrorFechaInicio.postValue(null);
+                mErrorFechaInicio.setValue(null);
             }
         }
         if (fechaFinStr == null || fechaFinStr.trim().isEmpty()) {
-            mErrorFechaFin.postValue("Debe ingresar una fecha de fin");
+            mErrorFechaFin.setValue("Debe ingresar una fecha de fin");
             valido = false;
         } else {
             fechaFin = Services.parseFecha(fechaFinStr);
             if (fechaFin == null) {
-                mErrorFechaFin.postValue("Formato de fecha inválido (use dd/MM/yyyy)");
+                mErrorFechaFin.setValue("Formato de fecha inválido (use dd/MM/yyyy)");
                 valido = false;
             } else {
-                mErrorFechaFin.postValue(null);
+                mErrorFechaFin.setValue(null);
             }
         }
 
         if (fechaInicio != null && fechaFin != null) {
             if (fechaFin.before(fechaInicio)) {
-                mErrorFechaFin.postValue("La fecha de fin no puede ser anterior a la fecha de inicio");
+                mErrorFechaFin.setValue("La fecha de fin no puede ser anterior a la fecha de inicio");
                 valido = false;
             }
         }
@@ -250,38 +243,78 @@ public class AgregarActividadViewModel extends AndroidViewModel {
             mError.postValue("Debe seleccionar al menos lote y tipo de actividad");
             return;
         }
-        boolean valido = validarCampos(descripcion, fechaInicioStr, fechaFinStr, cantidadStr, costoStr);
-        if (valido){
-            Double cantidad = (cantidadStr == null || cantidadStr.isEmpty()) ? null : Double.parseDouble(cantidadStr);
-            Double costo = (costoStr == null || costoStr.isEmpty()) ? null : Double.parseDouble(costoStr);
 
-            Date fechaInicio = Services.parseFecha(fechaInicioStr);
-            Date fechaFin = Services.parseFecha(fechaFinStr);
+        boolean valido = validarCampos(descripcion, fechaInicioStr, fechaFinStr, costoStr);
+        if (!valido){
+            return;
+        }
 
-            Integer idLote = idLoteSeleccionado.getValue();
-            Integer idTipoActividad = idTipoSeleccionado.getValue();
-            Integer idInsumo = idInsumoSeleccionado.getValue();
-            Integer idRecurso = idRecursoSeleccionado.getValue();
+        Double cantidad = (cantidadStr == null || cantidadStr.isEmpty()) ? null : Double.parseDouble(cantidadStr);
+        Double costo = (costoStr == null || costoStr.isEmpty()) ? null : Double.parseDouble(costoStr);
 
-            Actividad nuevaActividad = new Actividad(
-                    0,
-                    idLote != null ? idLote : 0,
-                    idInsumo,
-                    idRecurso,
-                    idTipoActividad != null ? idTipoActividad : 0,
-                    descripcion,
-                    fechaInicio,
-                    fechaFin,
-                    cantidad != null ? cantidad : 0,
-                    costo != null ? costo : 0
-            );
+        Date fechaInicio = Services.parseFecha(fechaInicioStr);
+        Date fechaFin = Services.parseFecha(fechaFinStr);
 
-            agregarActividad(nuevaActividad);
-        };
+        Integer idLote = idLoteSeleccionado.getValue();
+        Integer idTipoActividad = idTipoSeleccionado.getValue();
+        Integer idInsumo = idInsumoSeleccionado.getValue();
+        Integer idRecurso = idRecursoSeleccionado.getValue();
+
+        Actividad nuevaActividad = new Actividad(
+                0,
+                idLote != null ? idLote : 0,
+                idInsumo,
+                idRecurso,
+                idTipoActividad != null ? idTipoActividad : 0,
+                descripcion,
+                fechaInicio,
+                fechaFin,
+                cantidad != null ? cantidad : 0,
+                costo != null ? costo : 0
+        );
+
+        if(nuevaActividad.getId_insumo() != null && nuevaActividad.getCantidad_insumo() > 0){
+            verificarStockYAgregar(nuevaActividad);
+        } else {
+            procederConAgregarActividad(nuevaActividad);
+        }
     }
 
-    private void agregarActividad(Actividad nuevaActividad) {
+    private void verificarStockYAgregar(Actividad nuevaActividad) {
+        String token = Services.leerToken(getApplication());
+        ApiCLient.appService service = ApiCLient.getService();
 
+        try {
+            Call<Double> call = service.obtenerCantidadInsumoParaRestar(
+                    "Bearer " + token,
+                    nuevaActividad.getId_insumo(),
+                    nuevaActividad.getCantidad_insumo()
+            );
+
+            call.enqueue(new Callback<Double>() {
+                @Override
+                public void onResponse(Call<Double> call, Response<Double> response) {
+                    if(response.isSuccessful()) {
+                        procederConAgregarActividad(nuevaActividad);
+                    } else if (response.code() == 409) {
+                        mErrorCantidad.postValue("No hay suficiente stock. Stock disponible: ");
+                    } else {
+                        mError.postValue("Error al verificar stock. Código: " + response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Double> call, Throwable t) {
+                    mError.postValue("Error de red al verificar stock: " + t.getMessage());
+                }
+            });
+
+        } catch (Exception e) {
+            Toast.makeText(getApplication(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void procederConAgregarActividad(Actividad nuevaActividad) {
         String token = Services.leerToken(getApplication());
         ApiCLient.appService service = ApiCLient.getService();
 
@@ -291,7 +324,15 @@ public class AgregarActividadViewModel extends AndroidViewModel {
             call.enqueue(new Callback<JsonObject>() {
                 @Override
                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                    mExito.postValue("Actividad agregada correctamente");
+
+                    if(response.isSuccessful()){
+                        mExito.postValue("Actividad agregada correctamente");
+                        if(nuevaActividad.getId_insumo() != null && nuevaActividad.getCantidad_insumo() > 0){
+                            restarInsumo(nuevaActividad.getCantidad_insumo(), nuevaActividad.getId_insumo());
+                        }
+                    } else {
+                        mError.postValue("Error al agregar actividad. Código: " + response.code());
+                    }
                 }
 
                 @Override
@@ -303,17 +344,41 @@ public class AgregarActividadViewModel extends AndroidViewModel {
         } catch (Exception e) {
             Toast.makeText(getApplication(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
     }
 
+    private void restarInsumo(double cantidadInsumo, int idInsumo) {
+        String token = Services.leerToken(getApplication());
+        ApiCLient.appService service = ApiCLient.getService();
 
+        try{
+            Call<JsonObject> call = service.restarInsumo("Bearer " + token, idInsumo, cantidadInsumo);
+
+            call.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    if(response.isSuccessful()) {
+                        mExitoRestarInsumo.postValue("Insumo restado correctamente");
+                    } else {
+                        mError.postValue("Error al restar insumo. Código: " + response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    mError.postValue("Error al restar insumo: " + t.getMessage());
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(getApplication(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void seleccionarLote(String nombreSeleccionado) {
         List<Lote> lotes = mLotes.getValue();
         if (lotes != null) {
             for (Lote l : lotes) {
                 if (l.getNombre().equals(nombreSeleccionado)) {
-                    idLoteSeleccionado.postValue(l.getId_campo());
+                    idLoteSeleccionado.postValue(l.getId_lote());
                     break;
                 }
             }
@@ -355,6 +420,4 @@ public class AgregarActividadViewModel extends AndroidViewModel {
             }
         }
     }
-
-
 }

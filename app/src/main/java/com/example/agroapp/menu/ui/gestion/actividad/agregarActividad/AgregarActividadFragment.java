@@ -56,6 +56,9 @@ public class AgregarActividadFragment extends Fragment {
         vm.getmError().observe(getViewLifecycleOwner(), msg -> {
             Snackbar.make(binding.getRoot(), msg, Snackbar.LENGTH_LONG).show();
         });
+        vm.getExitoRestarInsumo().observe(getViewLifecycleOwner(), msg -> {
+            Snackbar.make(binding.getRoot(), msg, Snackbar.LENGTH_SHORT).show();
+        });
 
         binding.autoLote.setOnItemClickListener((parent, view, position, id) -> {
             String seleccionado = parent.getItemAtPosition(position).toString();
