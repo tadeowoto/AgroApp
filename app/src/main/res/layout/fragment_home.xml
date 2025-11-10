@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:padding="16dp"
+    android:padding="20dp"
+    android:fillViewport="true"
     tools:context=".menu.ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:dividerPadding="12dp">
+        android:orientation="vertical">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -54,14 +54,11 @@
             android:useDefaultMargins="true"
             android:layout_marginBottom="20dp">
 
-
             <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                app:cardCornerRadius="18dp"
-                android:backgroundTint="#E8F5E9"
-                app:cardElevation="2dp">
+                android:layout_columnWeight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -70,11 +67,11 @@
                     android:padding="20dp"
                     android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🌱"
-                        android:textSize="34sp"
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_landscape"
+                        app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
                     <TextView
@@ -97,12 +94,10 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                app:cardCornerRadius="18dp"
-                android:backgroundTint="#FFF9C4"
-                app:cardElevation="2dp">
+                android:layout_columnWeight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,11 +106,11 @@
                     android:padding="20dp"
                     android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="📍"
-                        android:textSize="34sp"
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/grass_24px"
+                        app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
                     <TextView
@@ -138,12 +133,10 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                app:cardCornerRadius="18dp"
-                android:backgroundTint="#FFE0B2"
-                app:cardElevation="2dp">
+                android:layout_columnWeight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -152,11 +145,11 @@
                     android:padding="20dp"
                     android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="📦"
-                        android:textSize="34sp"
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/inventory_24px"
+                        app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
                     <TextView
@@ -178,14 +171,11 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
             <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                app:cardCornerRadius="18dp"
-                android:backgroundTint="#BBDEFB"
-                app:cardElevation="2dp">
+                android:layout_columnWeight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -194,11 +184,11 @@
                     android:padding="20dp"
                     android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🚜"
-                        android:textSize="34sp"
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/agriculture_24px"
+                        app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
                     <TextView
@@ -221,7 +211,6 @@
             </com.google.android.material.card.MaterialCardView>
         </GridLayout>
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -242,9 +231,11 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="➕ Agregar Actividad"
-                android:backgroundTint="#E8F5E9"
-                android:textColor="@color/colorPrimary"
+                android:text="Agregar Actividad"
+                android:textColor="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorBackgroundGreenLight"
+                app:icon="@drawable/ic_add"
+                app:iconTint="@color/colorPrimaryDark"
                 android:layout_marginBottom="8dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -252,9 +243,11 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="👩‍🌾 Ver Recursos"
-                android:backgroundTint="#E3F2FD"
-                android:textColor="#1565C0"
+                android:text="Ver Recursos"
+                android:textColor="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorBackgroundGreenLight"
+                app:icon="@drawable/agriculture_24px"
+                app:iconTint="@color/colorPrimaryDark"
                 android:layout_marginBottom="8dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -262,9 +255,11 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="📦 Ver Insumos"
-                android:backgroundTint="#FFF3E0"
-                android:textColor="#E65100"
+                android:text="Ver Insumos"
+                android:textColor="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorBackgroundGreenLight"
+                app:icon="@drawable/inventory_24px"
+                app:iconTint="@color/colorPrimaryDark"
                 android:layout_marginBottom="8dp" />
         </LinearLayout>
 
