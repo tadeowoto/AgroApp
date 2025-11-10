@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollAgregarInsumo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:fillViewport="true"
     android:background="@color/colorBackground">
 
     <LinearLayout
@@ -13,40 +16,40 @@
         android:gravity="center_horizontal"
         android:paddingBottom="24dp">
 
-
         <TextView
             android:id="@+id/tvTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agregar Recurso"
-            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:layout_marginBottom="24dp" />
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilNombre"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre"
-            >
+            app:startIconDrawable="@drawable/agriculture_24px">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords" />
+                android:inputType="textCapWords"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilTipo"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tipo"
+            app:startIconDrawable="@drawable/list_24px"
             android:layout_marginTop="16dp">
 
             <AutoCompleteTextView
@@ -54,47 +57,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:focusable="false" />
+                android:focusable="false"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilMarca"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Marca"
+            app:startIconDrawable="@drawable/description_24px"
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMarca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords" />
+                android:inputType="textCapWords"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilModelo"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Modelo"
+            app:startIconDrawable="@drawable/ic_edit"
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etModelo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEstado"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Estado"
+            app:startIconDrawable="@drawable/check_box_24px"
             android:layout_marginTop="16dp">
 
             <AutoCompleteTextView
@@ -102,21 +112,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:focusable="false" />
+                android:focusable="false"
+                android:paddingStart="56dp"
+                android:paddingEnd="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGuardarRecurso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar"
-            android:textAllCaps="false"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/colorPrimary"
-            android:textColor="@android:color/white"
-            app:cornerRadius="16dp"
-            app:iconGravity="textStart" />
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="Guardar"
+            android:textColor="@color/white"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/save_24px"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white" />
 
     </LinearLayout>
 </ScrollView>

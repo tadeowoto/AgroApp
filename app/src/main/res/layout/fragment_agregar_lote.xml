@@ -117,18 +117,18 @@
             android:id="@+id/btnGuardarLote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Guardar lote"
-            android:textColor="@color/white"
+            android:layout_marginTop="32dp"
             android:backgroundTint="@color/colorPrimary"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            app:cornerRadius="100dp"
+            android:text="Guardar lote"
+            android:textColor="@color/white"
+            app:cornerRadius="14dp"
             app:icon="@drawable/save_24px"
             app:iconTint="@color/white"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@id/layoutSuperficie"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/layoutSuperficie" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
 
