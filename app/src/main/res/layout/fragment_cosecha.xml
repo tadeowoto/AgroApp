@@ -4,44 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_lote"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
-
-    <LinearLayout
-        android:id="@+id/header"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        app:elevation="4dp">
 
-        <TextView
-            android:id="@+id/tvTituloLotes"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lotes"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_scrollFlags="scroll|enterAlways">
 
-        <TextView
-            android:id="@+id/tvCampoSeleccionado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Seleccione un lote para ver su cosecha"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvTituloLotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lotes"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/tvCampoSeleccionado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleccione un lote para ver su cosecha"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:alpha="0.8"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="72dp"
-        android:padding="8dp"
+        android:padding="12dp"
         android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/item_lote" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

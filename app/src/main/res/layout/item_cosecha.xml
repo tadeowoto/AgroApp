@@ -1,48 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardCosecha"
+    style="@style/App.CardView.Default"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="12dp"
-    android:layout_marginVertical="6dp"
-    android:elevation="4dp"
-    app:cardCornerRadius="16dp"
-    app:cardUseCompatPadding="true">
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tvFechaInicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fecha inicio: 12/10/2025"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="6dp" />
-
-        <TextView
-            android:id="@+id/tvFechaFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fecha fin: 12/10/2025"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="6dp" />
+        <ImageView
+            android:id="@+id/ivCosechaIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/item_icon_background"
+            android:padding="10dp"
+            app:srcCompat="@drawable/calendar_add_on_24px"
+            app:tint="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
             android:id="@+id/tvRendimientoCosecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rendimiento: 5.2 t/ha"
-            android:textSize="14sp"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5.2 t/ha" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvFechaInicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/ivCosechaIcon"
+            app:layout_constraintEnd_toStartOf="@id/tvRendimientoCosecha"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvFechaFin"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Fecha inicio: 12/10/2025" />
+
+        <TextView
+            android:id="@+id/tvFechaFin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvFechaInicio"
+            app:layout_constraintEnd_toEndOf="@id/tvFechaInicio"
+            app:layout_constraintTop_toBottomOf="@id/tvFechaInicio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Fecha fin: 12/10/2025" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
