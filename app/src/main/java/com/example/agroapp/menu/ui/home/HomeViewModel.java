@@ -7,14 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.agroapp.lib.ApiCLient;
 import com.example.agroapp.lib.Services;
-import com.example.agroapp.model.actividad.Actividad;
-import com.example.agroapp.model.cosecha.Cosecha;
+import com.google.gson.JsonObject;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +26,9 @@ public class HomeViewModel extends AndroidViewModel {
     MutableLiveData<Integer> mInsumos = new MutableLiveData<>();
     MutableLiveData<Integer> mCampos = new MutableLiveData<>();
     MutableLiveData<String> mError = new MutableLiveData<>();
+
+    MutableLiveData<Map<String, String>> mClima = new MutableLiveData<>();
+    MutableLiveData<String> mErrorClima = new MutableLiveData<>();
 
 
 

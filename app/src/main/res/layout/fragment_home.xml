@@ -46,6 +46,145 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🌦️ Clima Actual: Córdoba, Argentina"
+            android:textColor="@color/colorTextPrimary"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:useDefaultMargins="true"
+            android:alignmentMode="alignMargins"
+            android:layout_marginBottom="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardClimaPrincipal"
+                style="@style/App.CardView.Default"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowSpan="2"
+                android:layout_gravity="fill_vertical"
+                app:cardBackgroundColor="#E3F2FD">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:id="@+id/ivClimaIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="8dp"
+                        app:srcCompat="@drawable/brightness_5_24px"
+                        app:tint="#FFC107"/>
+
+                    <TextView
+                        android:id="@+id/tvClimaTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25°C"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="40sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvClimaCondicion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Despejado"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardClimaSensacion"
+                style="@style/App.CardView.Default"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/device_thermostat_24px"
+                        app:tint="@color/colorTextSecondary"
+                        android:layout_marginBottom="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sensación"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/tvClimaSensacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="27°C"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="22sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardClimaHumedad"
+                style="@style/App.CardView.Default"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/humidity_high_24px"
+                        app:tint="@color/colorTextSecondary"
+                        android:layout_marginBottom="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Humedad"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/tvClimaHumedad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="45%"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="22sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +209,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_landscape"
+                        app:srcCompat="@drawable/ic_landscape"
                         app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
@@ -78,7 +217,7 @@
                         android:id="@+id/tvCamposActivos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text="-"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -109,7 +248,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/grass_24px"
+                        app:srcCompat="@drawable/grass_24px"
                         app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
@@ -117,7 +256,7 @@
                         android:id="@+id/tvLotesProduccion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12"
+                        android:text="-"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -148,7 +287,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/inventory_24px"
+                        app:srcCompat="@drawable/inventory_24px"
                         app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
@@ -156,7 +295,7 @@
                         android:id="@+id/tvInsumosCantidad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="45"
+                        android:text="-"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -187,7 +326,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/agriculture_24px"
+                        app:srcCompat="@drawable/agriculture_24px"
                         app:tint="@color/colorPrimary"
                         android:layout_marginBottom="8dp" />
 
@@ -195,7 +334,7 @@
                         android:id="@+id/tvRecursosCantidad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10"
+                        android:text="-"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="22sp"
                         android:textStyle="bold"
