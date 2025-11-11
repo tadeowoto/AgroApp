@@ -13,6 +13,10 @@
             android:icon="@drawable/dashboard_24px"
             android:title="@string/gestion" />
         <item
+            android:id="@+id/nav_precios"
+            android:icon="@drawable/eco_24px"
+            android:title="Precios de Granos" />
+        <item
             android:id="@+id/mapaFragment"
             android:icon="@drawable/map_24px"
             android:title="@string/Mapa" />

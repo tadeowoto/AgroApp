@@ -21,6 +21,11 @@
             app:destination="@id/insumoFragment" />
     </fragment>
     <fragment
+        android:id="@+id/nav_precios"
+        android:name="com.example.agroapp.menu.ui.precios.PreciosFragment"
+        android:label="Precios de Granos"
+        tools:layout="@layout/fragment_precios" />
+    <fragment
         android:id="@+id/gestionFragment"
         android:name="com.example.agroapp.menu.ui.gestion.GestionFragment"
         android:label="Gestion Integral"
