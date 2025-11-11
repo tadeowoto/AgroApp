@@ -1,61 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_recurso"
+    style="@style/App.CardView.Default"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="4dp"
+    android:clickable="true"
+    android:focusable="true"
     android:foreground="?attr/selectableItemBackground">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivRecursoIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/item_icon_background"
+            android:padding="10dp"
+            app:srcCompat="@drawable/agriculture_24px"
+            app:tint="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvNombreRecurso"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Nombre del recurso"
-            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorTextPrimary"
             android:textSize="18sp"
-            android:textColor="@color/black" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/tvEstadoRecurso"
+            app:layout_constraintStart_toEndOf="@id/ivRecursoIcon"
+            app:layout_constraintTop_toTopOf="@id/ivRecursoIcon"
+            tools:text="Tractor John Deere" />
 
         <TextView
             android:id="@+id/tvTipoRecurso"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Tipo: "
-            android:textSize="15sp"
-            android:layout_marginTop="4dp" />
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/tvNombreRecurso"
+            app:layout_constraintStart_toStartOf="@id/tvNombreRecurso"
+            app:layout_constraintTop_toBottomOf="@id/tvNombreRecurso"
+            tools:text="Tipo: Maquinaria" />
 
         <TextView
             android:id="@+id/tvMarcaRecurso"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Marca: "
-            android:textSize="15sp"
-            android:layout_marginTop="2dp" />
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/tvNombreRecurso"
+            app:layout_constraintStart_toStartOf="@id/tvNombreRecurso"
+            app:layout_constraintTop_toBottomOf="@id/tvTipoRecurso"
+            tools:text="Marca: John Deere" />
 
         <TextView
             android:id="@+id/tvModeloRecurso"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Modelo: "
-            android:textSize="15sp"
-            android:layout_marginTop="2dp" />
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/tvNombreRecurso"
+            app:layout_constraintStart_toStartOf="@id/tvNombreRecurso"
+            app:layout_constraintTop_toBottomOf="@id/tvMarcaRecurso"
+            tools:text="Modelo: 7230J" />
 
         <TextView
             android:id="@+id/tvEstadoRecurso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado: "
-            android:textSize="15sp"
-            android:layout_marginTop="2dp" />
+            android:text="Disponible"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
