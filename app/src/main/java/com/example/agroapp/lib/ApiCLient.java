@@ -5,6 +5,7 @@ import com.example.agroapp.model.actividad.Actividad;
 import com.example.agroapp.model.campo.Campo;
 import com.example.agroapp.model.cosecha.Cosecha;
 import com.example.agroapp.model.dto.LoteDto;
+import com.example.agroapp.model.dto.UsuarioDto;
 import com.example.agroapp.model.insumo.Insumo;
 import com.example.agroapp.model.lote.Lote;
 import com.example.agroapp.model.recurso.Recurso;
@@ -153,6 +154,11 @@ public class ApiCLient {
 
         @GET("/api/insumos/stockActual/{id_insumo}")
         Call<Double> obtenerCantidadInsumoParaRestar(@Header("Authorization") String token, @Path("id_insumo") int id_insumo, @Query("cantidadARestar") double cantidadARestar);
+
+        @PUT("/api/usuarios/ActualizarPerfil")
+        Call<JsonObject> actualizarPerfil(@Header("Authorization") String token, @Body UsuarioDto usuario);
+
+
 
     }
 

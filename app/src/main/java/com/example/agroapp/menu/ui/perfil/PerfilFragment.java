@@ -44,6 +44,43 @@ public class PerfilFragment extends Fragment {
             Navigation.findNavController(v).navigate(R.id.action_perfilFragment_to_cambiarPasswordFragment);
         });
 
+        binding.btnEditar.setOnClickListener(v -> {
+            vm.procesarBoton(binding.btnEditar.getText().toString());
+        });
+        vm.getGuardarPerfil().observe(getViewLifecycleOwner(), guardar -> {
+            String nombre = binding.tvNombre.getText().toString();
+            String email = binding.tvEmail.getText().toString();
+            String telefono = binding.tvTelefono.getText().toString();
+
+            vm.actualizarPerfil(nombre, email,telefono);
+        });
+
+        vm.getTextoBoton().observe(getViewLifecycleOwner(), texto -> {
+            binding.btnEditar.setText(texto);
+        });
+        vm.getHabilitarCampos().observe(getViewLifecycleOwner(), habilitar -> {
+            binding.tvNombre.setEnabled(habilitar);
+            binding.tvEmail.setEnabled(habilitar);
+            binding.tvTelefono.setEnabled(habilitar);
+        });
+
+        vm.getmErrorEmail().observe(getViewLifecycleOwner(), error -> {
+            binding.tilEmail.setError(error);
+        });
+        vm.getmErrorTelefono().observe(getViewLifecycleOwner(), error -> {
+            binding.tilTelefono.setError(error);
+        });
+        vm.getmExito().observe(getViewLifecycleOwner(), exito -> {
+            Snackbar.make(binding.getRoot(), exito, Snackbar.LENGTH_LONG).show();
+        });
+        vm.getmError().observe(getViewLifecycleOwner(), error -> {
+            Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_LONG).show();
+        });
+
+
+
+
+
         vm.llenarCampos();
 
         return root;
