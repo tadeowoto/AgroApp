@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agroapp.R;
+import com.example.agroapp.lib.Services;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class InsumoAdapter extends RecyclerView.Adapter<InsumoAdapter.ViewHolder
         holder.tvTipo.setText(i.getTipo());
         holder.tvUnidad.setText(i.getUnidad());
         holder.tvStock.setText("Stock actual: " + i.getStock_actual());
-        holder.tvVencimiento.setText("Vence: " + i.getFecha_vencimiento());
+        holder.tvVencimiento.setText("Vence: " + Services.formatFechaDisplay(i.getFecha_vencimiento()));
 
         holder.card.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
