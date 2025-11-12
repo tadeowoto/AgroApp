@@ -12,10 +12,15 @@ import androidx.lifecycle.ViewModel;
 import com.example.agroapp.lib.ApiCLient;
 import com.example.agroapp.lib.Services;
 import com.example.agroapp.model.actividad.Actividad;
+import com.example.agroapp.model.dto.ActividadDto;
 import com.example.agroapp.model.insumo.Insumo;
 import com.example.agroapp.model.lote.Lote;
 import com.example.agroapp.model.recurso.Recurso;
 import com.example.agroapp.model.tipoActividad.TipoActividad;
+import com.google.gson.JsonObject;
+
+import java.text.ParseException;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +34,27 @@ public class DetalleActividadViewModel extends AndroidViewModel {
     MutableLiveData<String> mError = new MutableLiveData<>();
     MutableLiveData<Lote> mLote = new MutableLiveData<>();
     MutableLiveData<TipoActividad> mTipoActividad = new MutableLiveData<>();
+    MutableLiveData<Boolean> mHabilitarCampos = new MutableLiveData<>();
+    MutableLiveData<String> mTextoBoton = new MutableLiveData<>();
+    MutableLiveData<Boolean> mGuardarActividad = new MutableLiveData<>();
+
+    MutableLiveData<String> mErrorNombre = new MutableLiveData<>();
+    MutableLiveData<String> mErrorCosto = new MutableLiveData<>();
+    MutableLiveData<String> mErrorSuperficie = new MutableLiveData<>();
+    MutableLiveData<String> mErrorFechaInicio = new MutableLiveData<>();
+    MutableLiveData<String> mErrorFechaFin = new MutableLiveData<>();
+    MutableLiveData<String> mErrorCantidadInsumo = new MutableLiveData<>();
+    MutableLiveData<String> mErrorDescripcion = new MutableLiveData<>();
+    MutableLiveData<String> mExito = new MutableLiveData<>();
+
+
+
+
+
+
+
+
+
 
 
 
@@ -39,6 +65,39 @@ public class DetalleActividadViewModel extends AndroidViewModel {
 
     public LiveData<Actividad> getActividad() {
         return mActividad;
+    }
+    public LiveData<Boolean> getHabilitarCampos() {
+        return mHabilitarCampos;
+    }
+    public LiveData<String> getTextoBoton() {
+        return mTextoBoton;
+    }
+    public LiveData<String> getErrorNombre() {
+        return mErrorNombre;
+    }
+    public LiveData<String> getErrorDescripcion() {
+        return mErrorDescripcion;
+    }
+    public LiveData<String> getErrorSuperficie() {
+        return mErrorSuperficie;
+    }
+    public LiveData<String> getErrorFechaInicio() {
+        return mErrorFechaInicio;
+    }
+    public LiveData<String> getErrorFechaFin() {
+        return mErrorFechaFin;
+    }
+    public LiveData<String> getExito() {
+        return mExito;
+    }
+    public LiveData<String> getErrorCantidadInsumo() {
+        return mErrorCantidadInsumo;
+    }
+    public LiveData<String> getErrorCosto() {
+        return mErrorCosto;
+    }
+    public LiveData<Boolean> getGuardarActividad() {
+        return mGuardarActividad;
     }
     public LiveData<TipoActividad> getTipoActividad() {
         return mTipoActividad;
@@ -157,4 +216,109 @@ public class DetalleActividadViewModel extends AndroidViewModel {
             Toast.makeText(getApplication(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void procesarBoton(String textoBoton){
+        if (textoBoton.equals("Editar")){
+            mHabilitarCampos.setValue(true);
+            mTextoBoton.setValue("Guardar");
+        }else{
+            mGuardarActividad.setValue(true);
+            mHabilitarCampos.setValue(false);
+            mTextoBoton.setValue("Editar");
+        }
+    }
+
+    private boolean valido(String descripcion, String fechaInicioStr, String fechaFinStr, String cantidadInsumoStr, String costoStr) {
+        boolean esValido = true;
+
+
+        if (descripcion == null || descripcion.trim().isEmpty()) {
+            mErrorDescripcion.setValue("Debe ingresar una descripción");
+            esValido = false;
+        }
+
+        Date fechaInicio = null;
+        if (fechaInicioStr == null || fechaInicioStr.trim().isEmpty()) {
+            mErrorFechaInicio.setValue("Debe ingresar una fecha de inicio");
+            esValido = false;
+        } else {
+            fechaInicio = Services.parseFecha(fechaInicioStr);
+            if (fechaInicio == null) {
+                mErrorFechaInicio.setValue("Formato de fecha inválido (dd/MM/yyyy)");
+                esValido = false;
+            }
+        }
+
+        Date fechaFin = null;
+        if (fechaFinStr == null || fechaFinStr.trim().isEmpty()) {
+            mErrorFechaFin.setValue("Debe ingresar una fecha de fin");
+            esValido = false;
+        } else {
+            fechaFin = Services.parseFecha(fechaFinStr);
+            if (fechaFin == null) {
+                mErrorFechaFin.setValue("Formato de fecha inválido (dd/MM/yyyy)");
+                esValido = false;
+            }
+        }
+        if (fechaInicio != null && fechaFin != null) {
+            if (fechaFin.before(fechaInicio)) {
+                mErrorFechaFin.setValue("La fecha de fin no puede ser anterior a la de inicio");
+                esValido = false;
+            }
+        }
+
+        if (cantidadInsumoStr != null && !cantidadInsumoStr.trim().isEmpty()) {
+            try {
+                Double.parseDouble(cantidadInsumoStr);
+            } catch (NumberFormatException e) {
+                mErrorCantidadInsumo.setValue("Debe ser un número válido");
+                esValido = false;
+            }
+        }
+        if (costoStr == null || costoStr.trim().isEmpty()) {
+            mErrorCosto.setValue("Debe ingresar un costo");
+            esValido = false;
+        } else {
+            try {
+                Double.parseDouble(costoStr);
+            } catch (NumberFormatException e) {
+                mErrorCosto.setValue("Debe ser un número válido (ej: 12500.50)");
+                esValido = false;
+            }
+        }
+
+        return esValido;
+    }
+
+
+
+
+    public void actualizarActividad(String descripcion, String fechaInicio, String fechaFin, String cantidadInsumo, String costo) {
+        boolean valido = valido(descripcion, fechaInicio, fechaFin, cantidadInsumo, costo);
+        String token = Services.leerToken(getApplication());
+        ApiCLient.appService service = ApiCLient.getService();
+
+        try{
+            if (valido){
+                ActividadDto actividadDto = new ActividadDto(descripcion, Services.parseFecha(fechaInicio), Services.parseFecha(fechaFin), Double.parseDouble(cantidadInsumo), Double.parseDouble(costo));
+                Call<JsonObject> call = service.actualizarActividad("Bearer " + token, mActividad.getValue().getIdActividad(),actividadDto);
+
+                call.enqueue(new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        mExito.postValue("Actividad actualizada");
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+                        mError.postValue("Error de conexión: " + t.getMessage());
+                    }
+                });
+            }
+        } catch (Exception e) {
+            Toast.makeText(getApplication(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }

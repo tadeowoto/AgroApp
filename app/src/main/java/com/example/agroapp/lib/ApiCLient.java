@@ -4,6 +4,7 @@ import com.example.agroapp.model.Usuario;
 import com.example.agroapp.model.actividad.Actividad;
 import com.example.agroapp.model.campo.Campo;
 import com.example.agroapp.model.cosecha.Cosecha;
+import com.example.agroapp.model.dto.ActividadDto;
 import com.example.agroapp.model.dto.LoteDto;
 import com.example.agroapp.model.dto.UsuarioDto;
 import com.example.agroapp.model.insumo.Insumo;
@@ -157,6 +158,11 @@ public class ApiCLient {
 
         @PUT("/api/usuarios/ActualizarPerfil")
         Call<JsonObject> actualizarPerfil(@Header("Authorization") String token, @Body UsuarioDto usuario);
+
+        @PUT("api/actividades/editar/{id_actividad}")
+        Call<JsonObject> actualizarActividad(@Header("Authorization") String token, @Path("id_actividad") int id_actividad, @Body ActividadDto actividad);
+
+
 
 
 

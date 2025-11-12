@@ -1,322 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:padding="20dp"
-    android:fillViewport="true">
+    android:background="@color/colorBackground">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:dividerPadding="16dp"
-        android:showDividers="middle">
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp">
 
-        <TextView
-            android:id="@+id/tvTitulo"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detalle de Actividad"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:layout_marginBottom="20dp" />
+            android:orientation="vertical"
+            android:dividerPadding="16dp"
+            android:showDividers="middle">
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/App.CardView.Default"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:text="Detalle de Actividad"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Información de Actividad"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginBottom="12dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Descripción"
-                    app:startIconDrawable="@drawable/ic_edit">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tvDescripcion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:maxLines="3"
-                        android:paddingStart="56dp"
-                        android:paddingEnd="12dp"
-                        android:text="Descripción de la actividad" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Tipo de actividad"
-                    app:startIconDrawable="@drawable/list_24px">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tvTipoActividad"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:paddingStart="56dp"
-                        android:paddingEnd="12dp"
-                        android:text="Fertilización" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp">
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Información de Actividad"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginBottom="12dp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:hint="Fecha inicio"
-                        app:startIconDrawable="@drawable/calendar_add_on_24px">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tvFechaInicio"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="date"
-                            android:paddingStart="56dp"
-                            android:paddingEnd="12dp"
-                            android:text="15/09/2025" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="match_parent" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:hint="Fecha fin"
-                        app:startIconDrawable="@drawable/calendar_add_on_24px">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tvFechaFin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="date"
-                            android:paddingStart="56dp"
-                            android:paddingEnd="12dp"
-                            android:text="17/09/2025" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Costo total"
-                    app:startIconDrawable="@drawable/attach_money_24px">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tvCosto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:paddingStart="56dp"
-                        android:paddingEnd="12dp"
-                        android:text="$12.500" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                        android:hint="Descripción"
+                        app:startIconDrawable="@drawable/ic_edit">
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/App.CardView.Default"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvDescripcion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"
+                            android:paddingStart="56dp"
+                            android:paddingEnd="12dp"
+                            android:enabled="false"
+                            android:textColor="@color/colorTextPrimary"
+                            android:text="Descripción de la actividad" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Tipo de actividad"
+                        app:startIconDrawable="@drawable/list_24px">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvTipoActividad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:paddingStart="56dp"
+                            android:paddingEnd="12dp"
+                            android:enabled="false"
+                            android:textColor="@color/colorTextPrimary"
+                            android:text="Fertilización" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Fecha inicio"
+                            app:startIconDrawable="@drawable/calendar_add_on_24px">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvFechaInicio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="date"
+                                android:paddingStart="56dp"
+                                android:paddingEnd="12dp"
+                                android:enabled="false"
+                                android:textColor="@color/colorTextPrimary"
+                                android:text="15/09/2025" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="match_parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Fecha fin"
+                            app:startIconDrawable="@drawable/calendar_add_on_24px">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvFechaFin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="date"
+                                android:paddingStart="56dp"
+                                android:paddingEnd="12dp"
+                                android:enabled="false"
+                                android:textColor="@color/colorTextPrimary"
+                                android:text="17/09/2025" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCantidadInsumo"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Cantidad de Insumo"
+                        app:startIconDrawable="@drawable/oil_barrel_24px">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvCantidadInsumo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="56dp"
+                            android:paddingEnd="12dp"
+                            android:enabled="false"
+                            android:textColor="@color/colorTextPrimary"
+                            android:text="500 Litros" /> </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Costo total"
+                        app:startIconDrawable="@drawable/attach_money_24px">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvCosto"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="56dp"
+                            android:paddingEnd="12dp"
+                            android:enabled="false"
+                            android:textColor="@color/colorTextPrimary"
+                            android:text="$12.500" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_marginTop="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Información del Lote"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginBottom="16dp" />
-
-                <TextView
-                    android:id="@+id/tvNombreLote"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lote A-12"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/pin_drop_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp"
-                    android:textColor="@color/colorTextPrimary"/>
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/tvCultivoLote"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Cultivo: Maíz"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/grass_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp"
-                    android:textColor="@color/colorTextPrimary"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Información del Lote"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginBottom="16dp" />
 
-                <TextView
-                    android:id="@+id/tvSuperficieLote"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Superficie: 15 ha"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/arrow_range_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTextPrimary"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/tvNombreLote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lote A-12"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/pin_drop_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/colorTextPrimary"/>
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/App.CardView.Default"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+                    <TextView
+                        android:id="@+id/tvCultivoLote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cultivo: Maíz"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/grass_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/colorTextPrimary"/>
 
-            <LinearLayout
+                    <TextView
+                        android:id="@+id/tvSuperficieLote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Superficie: 15 ha"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/arrow_range_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextPrimary"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_marginTop="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Insumo Utilizado"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginBottom="16dp" />
-
-                <TextView
-                    android:id="@+id/tvNombreInsumo"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre: ---"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/inventory_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp"
-                    android:textColor="@color/colorTextPrimary"/>
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/tvTipoInsumo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tipo: ---"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/list_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp"
-                    android:textColor="@color/colorTextPrimary"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Insumo Utilizado"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginBottom="16dp" />
 
-                <TextView
-                    android:id="@+id/tvStockInsumo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Stock: ---"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/inventory_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTextPrimary"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/tvNombreInsumo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre: ---"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/inventory_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/colorTextPrimary"/>
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/App.CardView.Default"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+                    <TextView
+                        android:id="@+id/tvTipoInsumo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo: ---"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/list_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/colorTextPrimary"/>
 
-            <LinearLayout
+                    <TextView
+                        android:id="@+id/tvStockInsumo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Stock: ---"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/inventory_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextPrimary"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/App.CardView.Default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_marginTop="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recursos Asignados"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginBottom="16dp" />
-
-                <TextView
-                    android:id="@+id/tvRecursoNombre"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Operario: ---"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/agriculture_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp"
-                    android:textColor="@color/colorTextPrimary"/>
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/tvMarca"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Marca: ---"
-                    android:textSize="16sp"
-                    android:drawableStart="@drawable/description_24px"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTextPrimary"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recursos Asignados"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginBottom="16dp" />
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/tvRecursoNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Operario: ---"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/agriculture_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/colorTextPrimary"/>
 
-    </LinearLayout>
-</ScrollView>
+                    <TextView
+                        android:id="@+id/tvMarca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Marca: ---"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/description_24px"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextPrimary"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:text="Editar"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_edit"
+        app:iconTint="@color/white"
+        app:backgroundTint="?attr/colorPrimary"
+        app:elevation="8dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -85,6 +85,15 @@ public class ActividadDto  implements Serializable {
         this.costo = costo;
     }
 
+    public ActividadDto(String descripcion, Date fecha_inicio, Date fecha_fin, double cantidad_insumo, double costo) {
+        this.descripcion = descripcion;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.cantidad_insumo = cantidad_insumo;
+        this.costo = costo;
+    }
+
+
     public ActividadDto(Integer id_lote, Integer id_insumo, Integer id_recurso, Integer id_tipo_actividad, String descripcion, Date fecha_inicio, Date fecha_fin, double cantidad_insumo, double costo) {
         this.id_lote = id_lote;
         this.id_insumo = id_insumo;
