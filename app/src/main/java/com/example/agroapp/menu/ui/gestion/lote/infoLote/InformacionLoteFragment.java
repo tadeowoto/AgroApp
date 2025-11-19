@@ -66,11 +66,24 @@ public class InformacionLoteFragment extends Fragment {
         vm.mGuardarLote.observe(getViewLifecycleOwner(), guardar -> {
             String nombre = binding.etNombreLote.getText().toString();
             String cultivo = binding.etCultivoLote.getText().toString();
-            double superficie = Double.parseDouble(binding.etSuperficieLote.getText().toString());
+            String superficie = binding.etSuperficieLote.getText().toString();
             String fecha = binding.etFechaCreacion.getText().toString();
 
             vm.actualizarLote(nombre, cultivo, superficie, fecha);
         });
+        vm.getErrorNombre().observe(getViewLifecycleOwner(), error -> {
+            binding.etNombreLote.setError(error);
+        });
+        vm.getErrorCultivo().observe(getViewLifecycleOwner(), error -> {
+            binding.etCultivoLote.setError(error);
+        });
+        vm.getErrorSuperficie().observe(getViewLifecycleOwner(), error -> {
+            binding.etSuperficieLote.setError(error);
+        });
+        vm.getErrorFecha().observe(getViewLifecycleOwner(), error -> {
+            binding.etFechaCreacion.setError(error);
+        });
+
 
         vm.getTextoBoton().observe(getViewLifecycleOwner(), texto -> {
             binding.btnEditarLote.setText(texto);

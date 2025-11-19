@@ -64,7 +64,6 @@ public class AgregarCosechaViewModel extends AndroidViewModel {
 
     public void guardarCosecha(String fechaInicio, String fechaFin, String rendimiento, String observaciones, int idLote) {
         boolean valido = valido(fechaInicio, fechaFin, rendimiento, observaciones);
-        Log.d("salida", String.valueOf(idLote));
         if (valido) {
             String token = Services.leerToken(getApplication());
             ApiCLient.appService service = ApiCLient.getService();

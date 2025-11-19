@@ -135,12 +135,13 @@ public class AgregarCampoViewModel extends AndroidViewModel {
     public void guardarCampo(String nombre, String ubicacion, String area, String latitud, String longitud) {
 
         boolean valido = validar(nombre, ubicacion, area, latitud, longitud);
-        double areaDouble = Double.parseDouble(area);
-        double latitudDouble = Double.parseDouble(latitud);
-        double longitudDouble = Double.parseDouble(longitud);
+
 
 
         if (valido){
+            double areaDouble = Double.parseDouble(area);
+            double latitudDouble = Double.parseDouble(latitud);
+            double longitudDouble = Double.parseDouble(longitud);
             String token = Services.leerToken(getApplication());
             ApiCLient.appService service = ApiCLient.getService();
             Call<JsonObject> call = service.agregarCampo("Bearer " + token, new Campo(nombre, ubicacion, areaDouble, longitudDouble,latitudDouble));

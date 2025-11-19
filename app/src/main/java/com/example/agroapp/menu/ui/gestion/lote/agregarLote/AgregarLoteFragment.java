@@ -54,10 +54,19 @@ public class AgregarLoteFragment extends Fragment {
         binding.btnGuardarLote.setOnClickListener( v ->{
             String nombre = binding.etNombreLote.getText().toString();
             String cultivo = binding.etCultivo.getText().toString();
-            double superficie = Double.parseDouble(binding.etSuperficie.getText().toString());
+            String superficie = binding.etSuperficie.getText().toString();
 
             vm.agregarLote(nombre, cultivo, superficie);
 
+        });
+        vm.getmErrorCultivo().observe(getViewLifecycleOwner(), error -> {
+            binding.etCultivo.setError(error);
+        });
+        vm.getmErrorNombre().observe(getViewLifecycleOwner(), error -> {
+            binding.etNombreLote.setError(error);
+        });
+        vm.getmErrorSupeficie().observe(getViewLifecycleOwner(), error -> {
+            binding.etSuperficie.setError(error);
         });
 
         vm.getmExito().observe(getViewLifecycleOwner(), exito -> {

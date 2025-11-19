@@ -63,13 +63,28 @@ public class detalleCampoFragment extends Fragment {
             Snackbar.make(binding.getRoot(), error, Snackbar.LENGTH_SHORT).show();
         });
 
+        vm.getErrorLatitud().observe(getViewLifecycleOwner(), error -> {
+            binding.etLatitudCampo.setError(error);
+        });
+        vm.getErrorLongitud().observe(getViewLifecycleOwner(), error -> {
+            binding.etLongitudCampo.setError(error);
+        });
+        vm.getErrorExtension().observe(getViewLifecycleOwner(), error -> {
+            binding.etExtensionCampo.setError(error);
+        });
+        vm.getErrorUbicacion().observe(getViewLifecycleOwner(), error -> {
+            binding.etUbicacionCampo.setError(error);
+        });
+
+
+
         vm.getGuardarCampo().observe(getViewLifecycleOwner(), guardar -> {
 
             String nombre = binding.etNombreCampo.getText().toString();
             String ubicacion = binding.etUbicacionCampo.getText().toString();
-            double extension = Double.parseDouble(binding.etExtensionCampo.getText().toString());
-            double latitud = Double.parseDouble(binding.etLatitudCampo.getText().toString());
-            double longitud = Double.parseDouble(binding.etLongitudCampo.getText().toString());
+            String extension = binding.etExtensionCampo.getText().toString();
+            String latitud = binding.etLatitudCampo.getText().toString();
+            String longitud = binding.etLongitudCampo.getText().toString();
 
             vm.actualizarCampo( nombre, ubicacion, extension, latitud, longitud);
         });

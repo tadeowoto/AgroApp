@@ -90,7 +90,7 @@ public class AgregarLoteViewModel extends AndroidViewModel {
 
     }
 
-    public boolean valido( String nombre, String cultivo, double superficie){
+    public boolean valido( String nombre, String cultivo, String superficie){
         boolean valido = true;
 
         if(nombre.isEmpty()){
@@ -101,23 +101,25 @@ public class AgregarLoteViewModel extends AndroidViewModel {
             mErrorCultivo.postValue("El cultivo no puede estar vacío");
             valido = false;
         }
-        if(superficie <= 0){
-            mErrorSupeficie.postValue("La superficie no puede ser menor o igual a 0");
+        if(superficie.isEmpty()){
+            mErrorSupeficie.postValue("La superficie no puede estar vacía");
             valido = false;
         }
         return valido;
     }
 
 
-    public void agregarLote( String nombre, String cultivo, double superficie) {
+    public void agregarLote( String nombre, String cultivo, String superficie) {
 
         boolean valido = valido(nombre, cultivo, superficie);
 
-        try{
-            String token = Services.leerToken(getApplication());
-            ApiCLient.appService service = ApiCLient.getService();
-            LoteDto l = new LoteDto(idCampoAsignado, nombre, cultivo, superficie);
-            if(valido){
+        if (valido) {
+            try{
+                String token = Services.leerToken(getApplication());
+                ApiCLient.appService service = ApiCLient.getService();
+                double superficieDouble = Double.parseDouble(superficie);
+                LoteDto l = new LoteDto(idCampoAsignado, nombre, cultivo, superficieDouble);
+
                 Call<JsonObject> call = service.agregarLote("Bearer " + token, l);
 
                 call.enqueue(new Callback<JsonObject>() {
@@ -133,14 +135,12 @@ public class AgregarLoteViewModel extends AndroidViewModel {
 
                     @Override
                     public void onFailure(Call<JsonObject> call, Throwable t) {
-                            mError.postValue("Error al agregar el lote");
+                        mError.postValue("Error al agregar el lote");
                     }
                 });
+            }catch (Exception e){
+                Toast.makeText(getApplication(), "Error de conexión: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-
-        }catch (Exception e){
-            Toast.makeText(getApplication(), "Error de conexión: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
         }
-    }
+        }
 }

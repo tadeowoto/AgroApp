@@ -102,7 +102,7 @@ public class InformacionLoteViewModel extends AndroidViewModel {
         mLote.setValue(l);
     }
 
-    public boolean validar(String nombre, String cultivo, double superficie, String fecha){
+    public boolean validar(String nombre, String cultivo, String superficie, String fecha){
         boolean valido = true;
 
         if (nombre == null || nombre.trim().isEmpty()){
@@ -113,31 +113,41 @@ public class InformacionLoteViewModel extends AndroidViewModel {
             mErrorCultivo.setValue("Ingrese un cultivo");
             valido = false;
         }
-        if (superficie <= 0){
-            mErrorSuperficie.setValue("Ingrese una superficie válida");
+        if (superficie == null || superficie.trim().isEmpty()) {
+            mErrorSuperficie.setValue("Ingrese una superficie");
             valido = false;
         }
-        if (fecha == null || fecha.trim().isEmpty()){
+        if (fecha == null || fecha.trim().isEmpty()) {
             mErrorFecha.setValue("Ingrese una fecha");
             valido = false;
+        } else {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            sdf.setLenient(false);
+
+            try {
+                Date date = sdf.parse(fecha.trim());
+            } catch (ParseException e) {
+                mErrorFecha.setValue("Formato inválido (use dd/MM/yyyy)");
+                valido = false;
+            }
         }
 
         return valido;
 
     }
 
-    public void actualizarLote(String nombre, String cultivo, double superficie, String fecha) {
+    public void actualizarLote(String nombre, String cultivo, String superficie, String fecha) {
         boolean valido = validar(nombre, cultivo, superficie, fecha);
         if (valido) {
             try{
                 String token = Services.leerToken(getApplication());
                 ApiCLient.appService service = ApiCLient.getService();
-
+                Double superficieDouble = Double.parseDouble(superficie);
 
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                 Date fechaDate = formatter.parse(fecha.trim());
 
-                LoteDto l = new LoteDto(nombre, cultivo, superficie, fechaDate);
+                LoteDto l = new LoteDto(nombre, cultivo, superficieDouble, fechaDate);
                 Call<Lote> call = service.actualizarLote("Bearer " + token, mLote.getValue().getId_lote() , l);
 
                 call.enqueue(new Callback<Lote>() {

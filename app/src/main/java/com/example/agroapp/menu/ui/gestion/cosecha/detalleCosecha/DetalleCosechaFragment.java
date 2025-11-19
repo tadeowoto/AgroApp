@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.agroapp.R;
 import com.example.agroapp.databinding.FragmentDetalleCosechaBinding;
+import com.example.agroapp.lib.Services;
 import com.example.agroapp.model.cosecha.Cosecha;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -38,8 +39,8 @@ public class DetalleCosechaFragment extends Fragment {
         vm.cargarCosecha(c);
 
         vm.getCosecha().observe(getViewLifecycleOwner(), cosecha -> {
-            binding.etFechaFinDetalle.setText("" + cosecha.getFecha_fin());
-            binding.etFechaInicioDetalle.setText("" + cosecha.getFecha_inicio());
+            binding.etFechaFinDetalle.setText(Services.formatFechaDisplay(cosecha.getFecha_fin()));
+            binding.etFechaInicioDetalle.setText(Services.formatFechaDisplay(cosecha.getFecha_inicio()));
             binding.etObservacionesDetalle.setText(cosecha.getObservaciones());
             binding.etRendimientoDetalle.setText(String.valueOf(cosecha.getRendimiento()));
         });

@@ -99,14 +99,17 @@ public class DetalleCampoViewModel extends AndroidViewModel {
         }
     }
 
-    public void actualizarCampo(String nombre, String ubicacion, double extension, double latitud, double longitud) {
+    public void actualizarCampo(String nombre, String ubicacion, String extension, String latitud, String longitud) {
 
         boolean valido = validar(nombre, ubicacion, extension, latitud, longitud);
 
         if (valido){
+            double extensionDouble = Double.parseDouble(extension);
+            double latitudDouble = Double.parseDouble(latitud);
+            double longitudDouble = Double.parseDouble(longitud);
             String token = Services.leerToken(getApplication());
             ApiCLient.appService service = ApiCLient.getService();
-            Campo c = new Campo( nombre, ubicacion, extension, latitud, longitud);
+            Campo c = new Campo( nombre, ubicacion, extensionDouble, latitudDouble, longitudDouble);
             Call<Campo> call = service.actualizarCampo("Bearer " + token, mCampo.getValue().getId_campo(), c);
 
             call.enqueue(new Callback<Campo>() {
@@ -132,7 +135,7 @@ public class DetalleCampoViewModel extends AndroidViewModel {
     }
 
 
-    public boolean validar(String nombre, String ubicacion, double extension, double latitud, double longitud){
+    public boolean validar(String nombre, String ubicacion, String extension, String latitud, String longitud){
         boolean valido = true;
 
         if (nombre == null || nombre.trim().isEmpty()){
@@ -143,22 +146,19 @@ public class DetalleCampoViewModel extends AndroidViewModel {
             mErrorUbicacion.setValue("Ingrese una ubicación");
             valido = false;
         }
-        if (extension <= 0){
-            mErrorExtension.setValue("Ingrese una extensión válida");
+        if (extension == null || extension.trim().isEmpty()){
+            mErrorExtension.setValue("Ingrese una extensión");
             valido = false;
         }
-        if (latitud < -90 || latitud > 90){
-            mErrorLatitud.setValue("Ingrese una latitud válida");
+        if (latitud == null || latitud.trim().isEmpty()){
+            mErrorLatitud.setValue("Ingrese una latitud");
             valido = false;
         }
-        if (longitud < -180 || longitud > 180){
-            mErrorLongitud.setValue("Ingrese una longitud válida");
+        if (longitud == null || longitud.trim().isEmpty()){
+            mErrorLongitud.setValue("Ingrese una longitud");
             valido = false;
         }
 
         return valido;
     }
-
-
-
 }
